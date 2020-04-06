@@ -11,7 +11,7 @@ Backlog
 Una red social dónde contribuyes a la mejora del medio ambiente a la vez que realizas un actividad deportiva. En la pagina principal se mostrarán eventos creador por otros usuarios, dónde podrás inscribirte. Algunos eventos tendrán como condición de acceso un minimo de miembros o un material necesario para la realización del evento.
 
 Wireframes:
-![Alt text](/Desktop/0f4e69ee-a48d-4d84-8c50-7e6408922d0c.jpg "WIREFRAMES")
+![Alt text](AUTH-FRONT/public/0f4e69ee-a48d-4d84-8c50-7e6408922d0c.jpg "WIREFRAMES")
 
 -Página principal
 -Creación de eventos
