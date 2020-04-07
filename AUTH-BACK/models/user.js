@@ -5,8 +5,8 @@ const userSchema = new Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   imageUrl: {type: String},
-  accions: [{myAccions:{ type: Schema.Types.ObjectId, ref: "user"},
-            joinAccions:{ type: Schema.Types.ObjectId, ref: "events"}
+  accions: [{myAccions:{ type: Schema.Types.ObjectId, ref: "User"},
+            joinAccions:{ type: Schema.Types.ObjectId, ref: "Event"}
             }         
  ],
   CP: {type: String},
@@ -15,6 +15,6 @@ const userSchema = new Schema({
   timestamps: true
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

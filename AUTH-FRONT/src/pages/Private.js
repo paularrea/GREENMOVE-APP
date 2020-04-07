@@ -1,16 +1,33 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
-import AddThing from "../components/AddThing";
-import Maps from "../components/Map"
+import { Switch, Route } from "react-router-dom";
+
+import Noticeboard from "./Noticeboard";
+import Notifications from "./Notifications";
+import AddEvents from "./AddEvents";
+import MyEvents from "./MyEvents";
+import MyProfile from "./MyProfile";
 import EventDetails from "./EventDetails";
+
+
+
 class Private extends Component {
+
   render() {
     return (
-      <div>
+      <div className="private">
+        
         <h1>Welcome {this.props.user.username}</h1>	
-        <EventDetails/>
-        <AddThing/>
-        <Maps/> 
+      
+        <Switch>
+          <Route exact path="/private" component={Noticeboard}/>
+          <Route exact path="/private/notifications" component={Notifications}/>
+          <Route exact path="/private/add-events" component={AddEvents} />
+          <Route exact path="/private/my-events" component={MyEvents} />
+          <Route exact path="/private/my-profile" component={MyProfile} /> 
+          <Route exact path="/events/:id" component={EventDetails} />
+        </Switch>
+     
       </div>
     );
   }

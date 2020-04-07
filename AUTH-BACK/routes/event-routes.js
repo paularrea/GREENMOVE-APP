@@ -2,12 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const Events = require("../models/Events");
+const Event = require("../models/Event");
 
 
 
 router.get("/events", (req, res, next) => {
-  Events.find()
+  Event.find()
     .then(allTheEvents => {
       res.json(allTheEvents);
     })
@@ -17,13 +17,14 @@ router.get("/events", (req, res, next) => {
 });
 
 router.post('/events/create', (req, res, next) => {
-  
-  Events.create(req.body)
+  console.log(req.body, 'test')
+  Event.create(req.body)
   .then( aNewThing => {
       res.status(200).json(aNewThing);
   })
   .catch( err => next(err) )
 })
+
 
 router.get('/events/:id', (req, res, next)=>{
 
@@ -31,7 +32,7 @@ router.get('/events/:id', (req, res, next)=>{
       res.status(400).json({ message: 'Specified id is not valid' });
       return;
     }
-    Events.findById(req.params.id) 
+    Event.findById(req.params.id) 
       .then(response => {
         res.status(200).json(response);
       })
@@ -48,7 +49,7 @@ router.get('/events/:id', (req, res, next)=>{
       return;
     }
   
-    Events.findByIdAndUpdate(req.params.id, req.body)
+    Event.findByIdAndUpdate(req.params.id, req.body)
       .then(() => {
         res.json({ message: `events with ${req.params.id} is updated successfully.` });
       })
@@ -64,7 +65,7 @@ router.get('/events/:id', (req, res, next)=>{
       return;
     }
   
-    Events.findByIdAndRemove(req.params.id)
+    Event.findByIdAndRemove(req.params.id)
       .then(() => {
         res.json({ message: `events with ${req.params.id} is removed successfully.` });
       })
