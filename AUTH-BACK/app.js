@@ -11,6 +11,10 @@ const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
 const auth = require("./routes/auth");
+var indexRouter = require("./routes/index");
+var eventRouter = require("./routes/event-routes");
+var profileRouter = require("./routes/profile-routes");
+var profileImage = require("./routes/file-upload-routes");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -24,7 +28,6 @@ mongoose
 
 // EXPRESS SERVER INSTANCE
 const app = express();
-
 // CORS MIDDLEWARE SETUP
 app.use(
   cors({
@@ -32,13 +35,6 @@ app.use(
     origin: [process.env.PUBLIC_DOMAIN],
   })
 );
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
 
 // SESSION MIDDLEWARE
 app.use(
@@ -65,6 +61,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
+app.use("/", indexRouter);
+app.use("/api", eventRouter);
+app.use("/api", profileRouter);
+app.use("/api", profileImage)
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
