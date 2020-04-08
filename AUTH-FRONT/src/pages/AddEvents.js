@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
-import Map from "../components/Map"
+import Mapa from "../components/Map"
+import axios from "axios";
+import axiosRequestFunctions from "../lib/auth-service";
+
 class AddEvents extends Component {
   constructor(props) {
     super(props);
@@ -14,15 +17,32 @@ class AddEvents extends Component {
       duration: "",
       date: "",
       materials: "",
-      number: "",
       city: "",
+      country: "",
       creator: this.props.user._id,
+      coordinates: []
     };
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value })
+    
+  };
+
+  handleSearch = (e) => {
+    const { name, value } = e.target;
+    if(name=="city"){
+      axios.get(`https://nominatim.openstreetmap.org/search.php?format=json&q=${value}%20${this.state.country}%20${this.state.postalCode}%20${this.state.street}`)
+      .then(responseFromApi => {
+        console.log(responseFromApi)
+        
+        this.setState({ coordinates:[Number(responseFromApi.data[0].lat), Number(responseFromApi.data[0].lon)]})
+        console.log(this.state.coordinates)
+      })
+    }else{
+      alert('hay un error')
+    }
   };
 
   handleFileUpload = (e) => {
@@ -68,7 +88,7 @@ class AddEvents extends Component {
             />
           </div>
           <div className="form-group">
-            <label for="idName">Name</label>
+            <label for="idName">Title</label>
             <input
               className="form-control"
               id="idName"
@@ -105,29 +125,19 @@ class AddEvents extends Component {
                 name="street"
                 value={this.state.street}
                 onChange={(e) => this.handleChange(e)}
+                
               />
             </div>
+      
             <div className="col-md-6 mb-3">
               <input
                 className="form-control"
-                id="idAddress"
+                id="idcountry"
                 aria-describedby="Address"
-                placeholder="Number"
+                placeholder="Country"
                 type="text"
-                name="number"
-                value={this.state.number}
-                onChange={(e) => this.handleChange(e)}
-              />
-            </div>
-            <div className="col-md-6 mb-3">
-              <input
-                className="form-control"
-                id="idAddress"
-                aria-describedby="Address"
-                placeholder="City"
-                type="text"
-                name="city"
-                value={this.state.city}
+                name="country"
+                value={this.state.country}
                 onChange={(e) => this.handleChange(e)}
               />
             </div>
@@ -143,6 +153,19 @@ class AddEvents extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
             </div>
+            <div className="col-md-6 mb-3">
+              <input
+                className="form-control"
+                id="idcity"
+                aria-describedby="Address"
+                placeholder="City"
+                type="text"
+                name="city"
+                value={this.state.city}
+                onChange={(e) => this.handleChange(e)}
+                onBlur={(e) => this.handleSearch(e)}
+              />
+            </div>
           </div>
           <label for="idDate">Date</label>
           <input
@@ -154,11 +177,21 @@ class AddEvents extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
+          <label for="idTime">Time</label>
+          <input
+            className="form-control"
+            type="time"
+            name="duration"
+            id="idTime"
+            value={this.state.duration}
+            onChange={(e) => this.handleChange(e)}
+          />
           <button className="btn btn-primary text-light" type="submit">
             Create Event
           </button>
         </form>
-        <Map/>
+        
+        <Mapa coordinates= {this.state.coordinates}/>
       </div>
     );
   }
