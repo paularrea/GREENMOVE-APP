@@ -29,7 +29,7 @@ class Noticeboard extends Component {
           {this.state.listOfEvents.map(event => {
             return (
               <div key={event._id}>
-                <Link to={`/events/${event._id}`}>
+                <Link to={`/private/events/${event._id}`}>
                     <img src={event.imageUrl} alt=""/>
                   <h3>{event.title}</h3>
                   <p>{event.description}</p>

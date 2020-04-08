@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -31,7 +31,7 @@ class EventDetails extends Component {
             <img src={this.state.imageUrl} alt="" />
             <h1>{this.state.title}</h1>
             <p>{this.state.description}</p>
-    
+            <Link to={'/private'}>Back to Events</Link>
       </div>
     );
   }

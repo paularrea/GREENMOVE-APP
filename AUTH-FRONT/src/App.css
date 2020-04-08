@@ -33,3 +33,7 @@ button.navbar-button {
   width: 100%;
   height: 100vh;
 }
+.navbarPriv{
+position: fixed;
+bottom: 0px;
+}

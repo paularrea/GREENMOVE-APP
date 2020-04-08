@@ -10,6 +10,8 @@ const eventSchema = new Schema({
   materials:{type: String},
   street: { type: String},
   postalCode: { type: String},
+  number: { type: String},
+  city: { type: String},
   duration: {type: Number},
   date:{ type: Date},
   coordinates:[{type: Number}]
