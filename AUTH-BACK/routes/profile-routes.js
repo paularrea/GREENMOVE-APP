@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const User = require("../models/User");
+const User = require("../models/user");
 
 router.get("/profile", (req, res, next) => {
   User.find()
@@ -32,16 +32,13 @@ router.get('/profile/:id', (req, res, next)=>{
   })
   
  
-  router.put('/profile/:id', (req, res, next)=>{
-  
-    if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      res.status(400).json({ message: 'Specified id is not valid' });
-      return;
-    }
-  
-    User.findByIdAndUpdate(req.params.id, req.body)
+  router.put('/profile/edit-profile', (req, res, next)=>{
+    const userId = req.body.user._id
+    console.log(userId)
+
+    User.findByIdAndUpdate(userId, req.body)
       .then(() => {
-        res.json({ message: `users with ${req.params.id} is updated successfully.` });
+        res.json({ message: `users with ${userId} is updated successfully.` });
       })
       .catch(err => {
         res.json(err);

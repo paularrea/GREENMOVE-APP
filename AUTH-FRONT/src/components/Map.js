@@ -1,38 +1,49 @@
-import React, { Component } from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import L from "leaflet";
-class Mapa extends Component {
-
+import React from 'react';
+import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import L from 'leaflet'
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3dpcDk0IiwiYSI6ImNrOHNyYXltNjAyNmczZ3Bzcmd2bXVvZTYifQ.nF1CjPtUo-PD-8-ym1QDkw';
+class Map extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  render(){
-    
-  console.log(this.props)
-    let position =  this.props.coordinates.length>0 ? this.props.coordinates : [41.3887901, 2.1589899]
-    const icon = L.icon({
-        iconUrl: require(`../img/map-marker-alt-solid.svg`),
-        iconSize: [24, 36],
-        iconAnchor: [12, 36],
-        popupAnchor: [0, -25]
+    this.state = {
+    lng: 5,
+    lat: 34,
+    zoom: 2,
+    coordinates:"" 
+    };
+    }
+    componentDidMount() {
+      const map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [this.state.lng, this.state.lat],
+      zoom: this.state.zoom
+      
       });
-
-    return (
-      <div>
-        <Map center={position} zoom={25} >
-          <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          />
-          { position && <Marker position={position} icon= {icon} draggable={true} onDragend={e=> this.props.updateCoordinates(e)}>
-            <Popup >
-            {this.props.title}<br />{this.props.duration}
-            </Popup>
-          </Marker>}
-        </Map>
-      </div>
-    )
-  }
-}
-export default Mapa;
+      
+      map.on('move', () => {
+        this.setState({
+        lng: map.getCenter().lng.toFixed(4),
+        lat: map.getCenter().lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2)
+        },()=>this.props.updateLatLng([Number(this.state.lat),Number(this.state.lng)]));
+        });
+        var geocoder = new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl
+          });
+          map.addControl(geocoder);    
+      }
+      render() {
+        return (
+        <div>
+        <div className='sidebarStyle'>
+        <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
+        </div>
+        <div ref={el => this.mapContainer = el} className='mapContainer' />
+        </div>
+        )
+        }
+    }  
+  export default Map;

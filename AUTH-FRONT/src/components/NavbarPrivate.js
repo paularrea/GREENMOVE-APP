@@ -11,24 +11,24 @@ class NavbarPrivate extends Component {
         {
          
           (<> 
-            <Link to="/private">
-              <a className="navbar-brand text-light ">Noticeboard</a>
+            <Link className="navbar-brand text-light" to="/private">
+              Noticeboard
             </Link>
             <br />
-            <Link to="/private/notifications">
-              <a className="navbar-brand text-light">Notifications</a>
+            <Link className="navbar-brand text-light" to="/private/notifications">
+             Notifications
             </Link>
             <br />
-            <Link to="/private/add-events">
-              <a className="navbar-brand text-light">Add Event</a>
+            <Link className="navbar-brand text-light" to="/private/add-events">
+              Add Event
             </Link>
               <br />
-            <Link to="/private/my-profile">
-              <a className="navbar-brand text-light">Profile</a>
+            <Link className="navbar-brand text-light" to="/private/my-profile">
+              Profile
             </Link>
             <br />
-            <Link to="/private/my-events">
-              <a className="navbar-brand text-light">My Accions</a>
+            <Link className="navbar-brand text-light" to="/private/my-events">
+              My Accions
             </Link>
            
           </>)

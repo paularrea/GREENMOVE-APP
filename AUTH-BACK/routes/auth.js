@@ -3,7 +3,7 @@ const router = express.Router();
 const createError = require("http-errors");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const User = require("../models/User");
+const User = require("../models/user");
 
 const {
   isLoggedIn,
@@ -19,7 +19,8 @@ router.post(
  
   validationLoggin(),
   async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, name, lastName } = req.body;
+    console.log(req.body, 'req body')
 
     try {
      
@@ -30,7 +31,7 @@ router.post(
    
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashPass = bcrypt.hashSync(password, salt);
-        const newUser = await User.create({ username, password: hashPass });
+        const newUser = await User.create({ username, password: hashPass, name, lastName });
        
         req.session.currentUser = newUser;
         res
@@ -72,6 +73,7 @@ router.post(
 
 
 router.post("/logout", isLoggedIn(), (req, res, next) => {
+  req.session.currentUser = ""
   req.session.destroy();
   
   res

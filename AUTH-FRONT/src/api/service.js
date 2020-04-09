@@ -22,5 +22,11 @@ export default {
       return service.post("/events/create", newThing)
       .then(res => res.data)
       .catch(errorHandler)
-  }
+  },
+  profileUpdate(profileUpdate){
+    return service.put("/profile/edit-profile", profileUpdate)
+    .then(res => res.data)
+    .catch(errorHandler)
+
+},
 };

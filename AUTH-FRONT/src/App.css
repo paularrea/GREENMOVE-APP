@@ -42,3 +42,48 @@ position: fixed;
 bottom: 0px;
 }
 
+.imgEvent{
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+}
+
+.profileImg{
+  width: 20%;
+}
+
+
+.mapContainer {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 200px;
+  }
+  .sidebarStyle {
+    display: none;
+    }
+    .mapboxgl-ctrl-attrib-inner{
+    display: none;
+    }
+    .mapboxgl-ctrl-geocoder--pin-right{
+      display: none;
+    }
+    .mapboxgl-ctrl-geocoder--input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    }
+    .mapboxgl-canvas-container{
+      width: 100%;
+      display: inline-block;
+    }
+    .mapboxgl-ctrl-geocoder{
+      width: 100%;
+      
+    }
+
+    .mapboxgl-marker{
+      display: none;
+    }
+    .mapboxgl-ctrl-geocoder--icon{
+      display: none;
+    }

@@ -38,7 +38,7 @@ class EventDetails extends Component {
     });
     return (
       <div>
-        <img src={this.state.imageUrl} alt="" />
+        <img className= "imgEvent" src={this.state.imageUrl} alt="" />
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
         <p>{this.state.duration}</p>
