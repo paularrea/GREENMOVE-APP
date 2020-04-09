@@ -11,15 +11,15 @@ class MyProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        
+        user: ""
     };
   }
 
   getUserProfile = () => {
     axios.get(`http://localhost:4000/api/profile`)
     .then((responseFromApi) => {
-        const profile = responseFromApi.data;
-        this.setState(profile);
+        const user = responseFromApi.data;
+        this.setState( user );
       })
       .catch((err) => {
         console.log(err);
@@ -34,12 +34,11 @@ class MyProfile extends Component {
       
     return (
       <div><p>My Profile</p>
-        <h3>{this.props.user.name}</h3>
-        <h3>{this.props.user.lastName}</h3>
-       <img className ="profileImg" src={this.props.imgUrl ? this.props.imgUrl :  logo } alt=""/>
-        <h3>{this.props.user.username}</h3>
-        <h3>{this.props.user.username}</h3>
-        <h3>{this.props.user.username}</h3>
+        <h3>{this.state.user.name}</h3>
+        <h3>{this.state.lastName}</h3>
+       <img className ="profileImg" src={this.state.imageUrl ? this.state.imageUrl : logo} alt=""/>
+      
+        <h3>{this.state.sobreMi}</h3>
         <Link to={`/private/edit-profile`}>
         <h3>Edit Profile</h3>
         </Link>

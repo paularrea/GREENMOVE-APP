@@ -6,11 +6,11 @@ import { withAuth } from "../lib/AuthProvider";
 class EditProfile extends Component {
     constructor(props) {
         super(props);
-        this.state = { user: {}};
+        this.state = {};
     }
     
     componentDidMount = () => {
-        this.setState({ user: this.props.user})    
+        this.setState(this.props.user)    
     }
 
       handleFileUpload = (e) => {
@@ -43,7 +43,7 @@ class EditProfile extends Component {
 
       handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState( {user: { [name]: value }})
+    this.setState( {[name]: value })
         
         
       };
@@ -63,7 +63,7 @@ class EditProfile extends Component {
               id="idProfileImg"
                 name= "imageUrl"
               aria-describedby="image"
-              placeholder={this.state.user.imageUrl}
+              placeholder={this.state.imageUrl}
               onChange={(e) => this.handleFileUpload(e)}
             />
           </div>
@@ -73,10 +73,10 @@ class EditProfile extends Component {
               className="form-control"
               id="idName"
               aria-describedby="Name"
-              placeholder={this.state.user.name}
+              placeholder={this.state.name}
               type="text"
               name="name"
-              value={this.state.user.name}
+              value={this.state.name}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -86,10 +86,10 @@ class EditProfile extends Component {
               className="form-control"
               id="idLastName"
               aria-describedby="Lastname"
-              placeholder={this.state.user.lastName}
+              placeholder={this.state.lastName}
               type="text"
               name="lastName"
-              value={this.state.user.lastName}
+              value={this.state.lastName}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -99,10 +99,10 @@ class EditProfile extends Component {
               className="form-control"
               id="idSobremi"
               aria-describedby="Sobremi"
-              placeholder={this.props.user.sobreMi}
+              placeholder={this.state.sobreMi}
               type="text"
               name="sobreMi"
-              value={this.props.user.sobreMi}
+              value={this.state.sobreMi}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
