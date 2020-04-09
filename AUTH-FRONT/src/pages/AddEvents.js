@@ -22,8 +22,14 @@ class AddEvents extends Component {
       creator: this.props.user._id,
       coordinates: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-
+  handleClick(e){
+    let latlng = e.target.getLatLng()
+    console.log("la 2999999",latlng)
+    this.setState({coordinates:[latlng.lat, latlng.lng]});
+  }
+ 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
@@ -38,12 +44,13 @@ class AddEvents extends Component {
         console.log(responseFromApi)
         
         this.setState({ coordinates:[Number(responseFromApi.data[0].lat), Number(responseFromApi.data[0].lon)]})
-        console.log(this.state.coordinates)
+         console.log("aquiiiiiii",this.state.coordinates)
       })
     }else{
       alert('hay un error')
     }
   };
+  
 
   handleFileUpload = (e) => {
     console.log("The file to be uploaded is :", e.target.files[0]);
@@ -72,6 +79,7 @@ class AddEvents extends Component {
       });
   };
   render() {
+    
     return (
       <div className="createEvent pb-5 mb-5">
         <h2>New Event</h2>
@@ -191,7 +199,7 @@ class AddEvents extends Component {
           </button>
         </form>
         
-        <Mapa coordinates= {this.state.coordinates}/>
+        <Mapa updateCoordinates = {this.handleClick} coordinates= {this.state.coordinates} title = {this.state.title} duration = {this.state.duration}/>
       </div>
     );
   }

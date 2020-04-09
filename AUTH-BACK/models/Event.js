@@ -12,7 +12,7 @@ const eventSchema = new Schema({
   postalCode: { type: String},
   number: { type: String},
   city: { type: String},
-  duration: {type: Number},
+  duration: {type: String},
   date:{ type: Date},
   coordinates:[{type: Number}]
 });
