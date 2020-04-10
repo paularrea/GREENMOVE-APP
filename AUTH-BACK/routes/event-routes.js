@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 
 const Event = require("../models/Event");
+const User = require("../models/user");
 
 
 
@@ -16,15 +17,38 @@ router.get("/events", (req, res, next) => {
     });
 });
 
-router.post('/events/create', (req, res, next) => {
+router.post('/events/create', async (req, res, next) => {
   console.log(req.body, 'test')
-  Event.create(req.body)
-  .then( aNewThing => {
-      res.status(200).json(aNewThing);
-  })
-  .catch( err => next(err) )
+  const {_id} = req.body
+  try{
+  const newEvent = await Event.create(req.body)
+  res.status(200).json(newEvent);
+ 
+  await User.updateOne(   
+         _id ,
+        { $push:{myAccions: newEvent._id}}
+      );
+  
+    }catch( err ){
+      console.log(err)
+    }
 })
-
+//JOIN
+router.post('/events/:id', async (req, res, next) => {
+  const {_id} = req.body
+  const eventId = req.params.id
+  console.log('TEEEEEEEEST :',{_id},eventId)
+  try{
+  const joinEvent = await User.updateOne({_id},
+    {$push:{joinAccions: eventId}})
+  const newMember = await Event.updateOne(eventId ,
+    { $push:{members: {_id}}})
+  res.status(200).json(newMember, joinEvent);
+  
+    }catch( err ){
+      console.log(err)
+    }
+})
 
 router.get('/events/:id', (req, res, next)=>{
 

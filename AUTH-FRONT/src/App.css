@@ -45,18 +45,29 @@ bottom: 0px;
 .imgEvent{
   object-fit: cover;
   width: 100%;
-  height: 400px;
+  height: 200px;
+}
+.imgMyEvent{
+  object-fit: cover;
+  width: 100%;
+  height: 100px;
+}
+.textMyEvent{
+font-size: 20px;
 }
 
 .profileImg{
-  width: 20%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 
 .mapContainer {
   width: 100%;
   height: 200px;
-  margin-bottom: 200px;
+  margin-bottom: 40px;
   }
   .sidebarStyle {
     display: none;
@@ -86,4 +97,7 @@ bottom: 0px;
     }
     .mapboxgl-ctrl-geocoder--icon{
       display: none;
+    }
+    .textDetails{
+    font-size: 24px;
     }

@@ -4,7 +4,16 @@ const router = express.Router();
 
 const User = require("../models/user");
 
-
+router.get("/my-events/:id", async (req, res, next) => {
+  try{
+  const userId = req.params.id
+  myAccions = await User.findById(userId).populate("myAccions");
+  // console.log(myAccions)
+  res.json(myAccions)
+  }catch(err){
+  res.json(err)
+  }
+});
 router.get("/profile", (req, res, next) => {
   User.find()
    
@@ -37,7 +46,7 @@ router.get('/profile/:id', (req, res, next)=>{
     const {name, _id, lastName, sobreMi, imageUrl} = req.body
     console.log(req.body, 'req body')
 
-    // if(!mongoose.Types.ObjectId.isValid(userId)) {
+    // if(!mongoose.Types.ObjectId.isValid(_id)) {
     //   res.status(400).json({ message: 'Specified id is not valid' });
     //   return;
     // }

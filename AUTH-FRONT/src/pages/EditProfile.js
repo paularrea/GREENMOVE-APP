@@ -1,46 +1,65 @@
 import React, { Component } from 'react'
-import axios from "axios";
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
+import { Redirect } from 'react-router';
+// import axios from "axios";
 
 class EditProfile extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          redirect: false,
+          user:{}
+        };
     }
     
+    // getProfile = () => {
+    //   axios.get(`http://localhost:4000/api/profile`).then(responseFromApi => {
+    //     console.log("responseeeeeee",responseFromApi.data[0])
+    //     this.setState({
+    //       user: responseFromApi.data[0]
+    //     });
+    //   });
+    // };
+  
+    // componentDidMount() {
+    //   this.getProfile(this.state.user);
+    //   this.setState(this.props.user)
+    // }
+    
+    handleFileUpload = (e) => {
+      console.log("The file to be uploaded is :", e.target.files[0]);
+      const uploadData = new FormData();
+      uploadData.append("imageUrl", e.target.files[0]);
+      service
+      .handleUpload(uploadData)
+      .then((response) => {
+        this.setState({ imageUrl: response.secure_url });
+      })
+      .catch((err) => {
+        console.log("Error while uploading the file:", err);
+      });
+    };
+    
+    
+    handleSubmit = (e) => {
+      e.preventDefault();
+      service
+      .profileUpdate(this.state)
+      .then((res) => {
+        this.setState({ redirect: true })
+        console.log("Edited!", res);
+        
+      })
+      .catch((err) => {
+        console.log("Error while editing the profile:", err);
+      });
+      
+    };
+    
     componentDidMount = () => {
-        this.setState(this.props.user)    
+      this.setState(this.props.user)
     }
-
-      handleFileUpload = (e) => {
-        console.log("The file to be uploaded is :", e.target.files[0]);
-        const uploadData = new FormData();
-        uploadData.append("imageUrl", e.target.files[0]);
-        service
-          .handleUpload(uploadData)
-          .then((response) => {
-            this.setState({ imageUrl: response.secure_url });
-          })
-          .catch((err) => {
-            console.log("Error while uploading the file:", err);
-          });
-      };
-
-
-      handleSubmit = (e) => {
-        e.preventDefault();
-        service
-          .profileUpdate(this.state)
-          .then((res) => {
-            console.log("Edited!", res);
-            // here you'd want to redirect
-          })
-          .catch((err) => {
-            console.log("Error while editing the profile:", err);
-          });
-      };
-
       handleChange = (e) => {
     const { name, value } = e.target;
     this.setState( {[name]: value })
@@ -49,10 +68,16 @@ class EditProfile extends Component {
       };
 
     render() {
+      const { redirect } = this.state;
+
+     if (redirect) {
+       return <Redirect to='/private/my-profile'/>;
+     }
         return (
            
             
       <div className="createEvent pb-5 mb-5">
+        
         <h2>Edit User</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="form-group">
@@ -76,7 +101,7 @@ class EditProfile extends Component {
               placeholder={this.state.name}
               type="text"
               name="name"
-              value={this.state.name}
+              value={this.state.name || ''}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -89,7 +114,7 @@ class EditProfile extends Component {
               placeholder={this.state.lastName}
               type="text"
               name="lastName"
-              value={this.state.lastName}
+              value={this.state.lastName || ''}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -102,14 +127,15 @@ class EditProfile extends Component {
               placeholder={this.state.sobreMi}
               type="text"
               name="sobreMi"
-              value={this.state.sobreMi}
+              value={this.state.sobreMi || ''}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
     
-          <button className="btn btn-primary text-light" type="submit">
+          <button  className="btn btn-primary text-light" type="submit">
             Save Profile
           </button>
+          
         </form>
             </div>
         )

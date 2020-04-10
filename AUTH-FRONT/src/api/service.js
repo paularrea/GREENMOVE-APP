@@ -29,4 +29,10 @@ export default {
     .catch(errorHandler)
 
 },
+addMember(newMember){
+  return service.post("/events/:id", newMember)
+  .then(res => res.data)
+  .catch(errorHandler)
+
+},
 };

@@ -8,10 +8,8 @@ const userSchema = new Schema({
   sobreMi: {type: String},
   password: {type: String, required: true},
   imageUrl: {type: String},
-  accions: [{myAccions:{ type: Schema.Types.ObjectId, ref: "User"},
-            joinAccions:{ type: Schema.Types.ObjectId, ref: "Event"}
-            }         
- ],
+  myAccions:[{ type: Schema.Types.ObjectId, ref: "Event"}],
+  joinAccions:[{ type: Schema.Types.ObjectId, ref: "Event"}],
   CP: {type: String},
   isUser: { type: Boolean, default: false } 
 }, {

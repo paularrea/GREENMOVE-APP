@@ -7,6 +7,7 @@ class NavbarPrivate extends Component {
 
   
     return (
+      <div className = "mt-5 pt-5"> 
       <nav className="navbar  fixed-bottom navbar-expand-lg bg-dark navbar-light bg-light">
         {
          
@@ -34,6 +35,7 @@ class NavbarPrivate extends Component {
           </>)
         }
       </nav>
+      </div>
     );
   }
 }

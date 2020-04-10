@@ -8,10 +8,6 @@ const eventSchema = new Schema({
   creator:{ type: Schema.Types.ObjectId, ref: "User"},
   members:[{ type: Schema.Types.ObjectId, ref: "User"}],
   materials:{type: String},
-  street: { type: String},
-  postalCode: { type: String},
-  number: { type: String},
-  city: { type: String},
   duration: {type: String},
   date:{ type: Date},
   coordinates:[{type: Number}]

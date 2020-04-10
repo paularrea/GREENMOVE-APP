@@ -3,13 +3,29 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
+import service from "../api/service";
+import { withAuth } from "../lib/AuthProvider";
+
 class EventDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       coordinates: "",
+      members: [this.props.user._id]
     };
   }
+  handleSubmit = (e) => {
+    console.log("USEEEEEEER ID :",this.props.user._id)
+    e.preventDefault();
+    service
+      .addMember(this.state.members)
+      .then((res) => {
+        console.log("Added", res);
+      })
+      .catch((err) => {
+        console.log("Error while adding the thing:", err);
+      });
+  };
 
   getEvent = () => {
     const { params } = this.props.match;
@@ -37,9 +53,10 @@ class EventDetails extends Component {
       popupAnchor: [0, -25],
     });
     return (
-      <div>
+      <div className ="pt-3">
+        <button type = "submit" onClick={(e) => this.handleSubmit(e)}>Join Event</button>
         <img className= "imgEvent" src={this.state.imageUrl} alt="" />
-        <h1>{this.state.title}</h1>
+        <h1 className ="textDetails">{this.state.title}</h1>
         <p>{this.state.description}</p>
         <p>{this.state.duration}</p>
         <p>{this.state.street}</p>
@@ -67,4 +84,4 @@ class EventDetails extends Component {
   }
 }
 
-export default EventDetails;
+export default withAuth(EventDetails);

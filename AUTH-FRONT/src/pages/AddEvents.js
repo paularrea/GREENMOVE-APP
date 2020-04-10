@@ -57,7 +57,7 @@ class AddEvents extends Component {
         <h2>New Event</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="form-group">
-            <label for="idImage">Add Event Image</label>
+            <label htmlFor="idImage">Add Event Image</label>
             <input
               type="file"
               className="form-control"
@@ -68,7 +68,7 @@ class AddEvents extends Component {
             />
           </div>
           <div className="form-group">
-            <label for="idName">Title</label>
+            <label htmlFor="idName">Title</label>
             <input
               className="form-control"
               id="idName"
@@ -76,12 +76,12 @@ class AddEvents extends Component {
               placeholder="Event Name"
               type="text"
               name="title"
-              value={this.state.title}
+              value={this.state.title || ''}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div className="form-group">
-            <label for="idDescription">Description</label>
+            <label htmlFor="idDescription">Description</label>
             <textarea
               className="form-control"
               id="idDescription"
@@ -89,35 +89,38 @@ class AddEvents extends Component {
               placeholder="Event Description"
               type="text"
               name="description"
-              value={this.state.description}
+              value={this.state.description || ''}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
-          <label for="idDate">Date</label>
+          <label htmlFor="idDate">Date</label>
           <input
             className="form-control"
             type="date"
             name="date"
             id="idDate"
-            value={this.state.date}
+            value={this.state.date || ''}
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <label for="idTime">Time</label>
+          <label htmlFor="idTime">Time</label>
           <input
             className="form-control"
             type="time"
             name="duration"
             id="idTime"
-            value={this.state.duration}
+            value={this.state.duration || ''}
             onChange={(e) => this.handleChange(e)}
           />
           
-        <label  for="idTime"> <b className ="text-center">Set the Location</b> </label>
+        <label  htmlFor="idTime"> <b className ="text-center">Set the Location</b> </label>
         <Map updateLatLng = {e=> this.handleLatLng(e)} coordinates= {this.state.coordinates}/>
-      <button className="btn btn-primary text-light" type="submit">
+      <div className ="text-center">
+      <button className=" text-center btn btn-primary text-light" type="submit">
+
             Create Event
           </button>
+          </div>
         </form>
         </div>
     );

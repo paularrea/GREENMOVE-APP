@@ -15,6 +15,7 @@ var indexRouter = require("./routes/index");
 var eventRouter = require("./routes/event-routes");
 var profileRouter = require("./routes/profile-routes");
 var profileImage = require("./routes/file-upload-routes");
+var myEvents = require("./routes/profile-routes");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -59,12 +60,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
 app.use("/", indexRouter);
 app.use("/api", eventRouter);
 app.use("/api", profileRouter);
 app.use("/api", profileImage)
+app.use("/api", myEvents)
 
 // ERROR HANDLING
 // catch 404 and forward to error handler

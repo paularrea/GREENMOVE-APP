@@ -1,7 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import L from 'leaflet'
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3dpcDk0IiwiYSI6ImNrOHNyYXltNjAyNmczZ3Bzcmd2bXVvZTYifQ.nF1CjPtUo-PD-8-ym1QDkw';
 class Map extends React.Component {
   constructor(props) {

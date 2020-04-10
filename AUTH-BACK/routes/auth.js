@@ -32,7 +32,7 @@ router.post(
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashPass = bcrypt.hashSync(password, salt);
         const newUser = await User.create({ username, password: hashPass, name, lastName });
-       
+        
         req.session.currentUser = newUser;
         res
           .status(200) 

@@ -31,8 +31,8 @@ class Noticeboard extends Component {
               <div key={event._id}>
                 <Link to={`/private/events/${event._id}`}>
                     <img className="imgEvent" src={event.imageUrl} alt=""/>
-                  <h3>{event.title}</h3>
-                  <p>{event.description}</p>
+                  <h3 className="text-dark">{event.title}</h3>
+                  <p className="text-dark">{event.description}</p>
                 </Link>
                 {/* <p style={{maxWidth: '400px'}} >{event.description} </p> */}
               </div>
