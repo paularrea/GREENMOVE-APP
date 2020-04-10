@@ -11,14 +11,18 @@ class EventDetails extends Component {
     super(props);
     this.state = {
       coordinates: "",
-      members: [this.props.user._id]
+      members: [this.props.user._id],
+      
     };
   }
   handleSubmit = (e) => {
+    const { params } = this.props.match;
+   console.log(params.id, "id del evento") 
     console.log("USEEEEEEER ID :",this.props.user._id)
+   
     e.preventDefault();
     service
-      .addMember(this.state.members)
+      .addMember({eventId: params.id, userId: this.props.user._id })
       .then((res) => {
         console.log("Added", res);
       })
@@ -29,6 +33,7 @@ class EventDetails extends Component {
 
   getEvent = () => {
     const { params } = this.props.match;
+    // console.log(params.id, "paramsEvent")
     axios
       .get(`http://localhost:4000/api/events/${params.id}`)
       .then((responseFromApi) => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-
+const isLoggedIn = require("../helpers/middlewares")
 const Event = require("../models/Event");
 const User = require("../models/user");
 
@@ -34,16 +34,20 @@ router.post('/events/create', async (req, res, next) => {
     }
 })
 //JOIN
-router.post('/events/:id', async (req, res, next) => {
-  const {_id} = req.body
-  const eventId = req.params.id
-  console.log('TEEEEEEEEST :',{_id},eventId)
+router.post('/events', async (req, res, next) => {
+ console.log(req.body, "object")
+  const eventId = req.body.eventId; //evento id
+  const userId = req.body.userId 
+  console.log(userId)
   try{
-  const joinEvent = await User.updateOne({_id},
-    {$push:{joinAccions: eventId}})
-  const newMember = await Event.updateOne(eventId ,
-    { $push:{members: {_id}}})
-  res.status(200).json(newMember, joinEvent);
+
+  await Event.updateOne({_id: eventId},
+      { $push:{members: userId}})
+  
+
+await User.updateOne({_id: userId},
+    { $push:{joinAccions: eventId}})
+  res.status(200).json('joined to joinAccions');
   
     }catch( err ){
       console.log(err)

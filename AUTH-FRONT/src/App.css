@@ -101,3 +101,8 @@ font-size: 20px;
     .textDetails{
     font-size: 24px;
     }
+
+    .btn-primary{
+      padding: 0 80px;
+      font-size: 25px !important;
+    }

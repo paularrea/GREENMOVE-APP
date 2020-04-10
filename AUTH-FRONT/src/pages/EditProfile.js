@@ -82,6 +82,7 @@ class EditProfile extends Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="form-group">
             <label htmlFor="idProfileImg">Edit profile image</label>
+            <img className ="profileImg" src={this.state.imageUrl} alt=""/>
             <input
               type="file"
               className="form-control"

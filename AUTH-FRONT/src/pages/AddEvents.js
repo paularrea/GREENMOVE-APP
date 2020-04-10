@@ -116,7 +116,7 @@ class AddEvents extends Component {
         <label  htmlFor="idTime"> <b className ="text-center">Set the Location</b> </label>
         <Map updateLatLng = {e=> this.handleLatLng(e)} coordinates= {this.state.coordinates}/>
       <div className ="text-center">
-      <button className=" text-center btn btn-primary text-light" type="submit">
+      <button className="text-center btn btn-primary text-light" type="submit">
 
             Create Event
           </button>
