@@ -10,6 +10,9 @@ import MyProfile from "./MyProfile";
 import EventDetails from "./EventDetails";
 import NavbarPrivate from "../components/NavbarPrivate";
 import EditProfile from "./EditProfile";
+import JoinEvents from "./JoinEvents";
+import AllEvents from "./AllEvents";
+
 
 
 class Private extends Component {
@@ -24,6 +27,8 @@ class Private extends Component {
           <Route exact path="/private/notifications" component={Notifications}/>
           <Route exact path="/private/add-events" component={AddEvents} />
           <Route exact path="/private/my-events" component={MyEvents} />
+          <Route exact path="/private/join-events" component={JoinEvents} />
+          <Route exact path="/private/all-events" component={AllEvents} />
           <Route exact path="/private/my-profile" component={MyProfile} /> 
           <Route exact path="/private/edit-profile" component={EditProfile} />
           <Route exact path="/private/events/:id" component={EventDetails} />

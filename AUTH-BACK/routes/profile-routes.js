@@ -8,8 +8,20 @@ router.get("/my-events/:id", async (req, res, next) => {
   try{
   const userId = req.params.id
   myAccions = await User.findById(userId).populate("myAccions");
+  
   // console.log(myAccions)
   res.json(myAccions)
+  }catch(err){
+  res.json(err)
+  }
+});
+router.get("/join-events/:id", async (req, res, next) => {
+  try{
+  const userId = req.params.id
+  
+  joinAccions = await User.findById(userId).populate("joinAccions");
+  // console.log(myAccions)
+  res.json(joinAccions)
   }catch(err){
   res.json(err)
   }

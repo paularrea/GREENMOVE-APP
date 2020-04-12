@@ -28,8 +28,8 @@ class NavbarPrivate extends Component {
               Profile
             </Link>
             <br />
-            <Link className="navbar-brand text-light" to="/private/my-events">
-              My Accions
+            <Link className="navbar-brand text-light" to="/private/all-events">
+              Accions
             </Link>
            
           </>)

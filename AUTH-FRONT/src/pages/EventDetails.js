@@ -11,7 +11,7 @@ class EventDetails extends Component {
     super(props);
     this.state = {
       coordinates: "",
-      members: [this.props.user._id],
+      members: [],
       
     };
   }
@@ -44,8 +44,22 @@ class EventDetails extends Component {
         console.log(err);
       });
   };
+  getMembers = () => {
+    const { params } = this.props.match;
+    // console.log(params.id, "paramsEvent")
+    axios
+      .get(`http://localhost:4000/api/events/${params.id}`)
+      .then((responseFromApi) => {
+        const members = responseFromApi.data.members;
+        this.setState({members: members});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   componentDidMount() {
     this.getEvent();
+    this.getMembers();
   }
 
   render() {
@@ -66,7 +80,21 @@ class EventDetails extends Component {
         <p>{this.state.duration}</p>
         <p>{this.state.street}</p>
         <p>{this.state.date}</p>
-
+        <div className = "row pt-3">
+          {this.state.members.map((member) => {
+            return(
+              
+            <div  key={member._id}>
+              
+                <img className="profileImg" src={member.imageUrl} alt="" />
+                <h3 className="textMyEvent text-dark">{member.name}{member.lastName}</h3>
+              
+            </div>
+            )
+          }
+          )}
+        </div>
+      
         <Map center={position} zoom={25}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

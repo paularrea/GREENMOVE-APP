@@ -1,36 +1,60 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../lib/AuthProvider";			//	<-- UPDATE HERE
-
+import { withAuth } from "../lib/AuthProvider"; //	<-- UPDATE HERE
+// import {logoutLogo} from "../img/sign-out-alt-solid.svg"
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: true,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      button: !this.state.button,
+    });
+  }
   render() {
-
-    const { user, logout, isLoggedin } = this.props;	//	<-- UPDATE HERE
+    const { user, logout, isLoggedin } = this.props; //	<-- UPDATE HERE
     return (
-      <nav className="navbar">
-            <Link to={'/'} id='home-btn'>
-          <h4>Home</h4>
-        </Link>
-        {
-          isLoggedin ? 
-          (<>
-            <p className="navbar-user">username: {user.username}</p>	{/* 	<-- UPDATE HERE     */}
-            <button className="navbar-button" onClick={logout}>Logout</button>	{/* 	<-- UPDATE HERE     */}
-          </>) 
-         : 
-          (<>
-            <Link to="/login">
-              <button className="navbar-button">Login</button>
-            </Link>
-            <br />
-            <Link to="/signup">
-              <button className="navbar-button">Sign Up</button>
-            </Link>
-          </>)
-        }
+      <nav>
+        <Link to={"/"} id="home-btn"></Link>
+        {isLoggedin ? (
+          <>
+            <button className="logout" onClick={logout}>
+              <img src= "" alt="Logout"/>
+            </button>{" "}
+            {/* 	<-- UPDATE HERE     */}
+          </>
+        ) : (
+          <>
+          <div className="navegacion row">
+            <div className="col login">
+              <Link to="/login">
+                <button
+                  className={this.state.button ? "buttonFalse" : "buttonTrue"}
+                  onClick={this.handleClick}
+                >
+                  Log in
+                </button>
+              </Link>
+            </div>
+            <div className="col signup">
+              <Link to="/signup">
+                <button
+                  className={this.state.button ? "buttonTrue" : "buttonFalse"}
+                  onClick={this.handleClick}
+                >
+                  Sign up
+                </button>
+              </Link>
+            </div>
+            </div>
+          </>
+        )}
       </nav>
     );
   }
 }
-
 export default withAuth(Navbar);

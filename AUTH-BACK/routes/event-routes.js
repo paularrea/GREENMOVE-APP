@@ -10,12 +10,15 @@ const User = require("../models/user");
 router.get("/events", (req, res, next) => {
   Event.find()
     .then(allTheEvents => {
+
       res.json(allTheEvents);
+
     })
     .catch(err => {
       res.json(err);
     });
 });
+
 
 router.post('/events/create', async (req, res, next) => {
   console.log(req.body, 'test')
@@ -54,14 +57,15 @@ await User.updateOne({_id: userId},
     }
 })
 
-router.get('/events/:id', (req, res, next)=>{
+router.get('/events/:id',  (req, res, next)=>{
 
     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
       res.status(400).json({ message: 'Specified id is not valid' });
       return;
     }
-    Event.findById(req.params.id) 
+    Event.findById(req.params.id).populate("members") 
       .then(response => {
+        console.log('responseeeeee Members', response)
         res.status(200).json(response);
       })
       .catch(err => {

@@ -53,6 +53,7 @@ class AddEvents extends Component {
   };
   render() {
     return (
+      <div className="container-pages">
       <div className="createEvent pb-5 mb-5">
         <h2>New Event</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -112,16 +113,15 @@ class AddEvents extends Component {
             value={this.state.duration || ''}
             onChange={(e) => this.handleChange(e)}
           />
-          
         <label  htmlFor="idTime"> <b className ="text-center">Set the Location</b> </label>
         <Map updateLatLng = {e=> this.handleLatLng(e)} coordinates= {this.state.coordinates}/>
       <div className ="text-center">
       <button className="text-center btn btn-primary text-light" type="submit">
-
             Create Event
           </button>
           </div>
         </form>
+        </div>
         </div>
     );
   }

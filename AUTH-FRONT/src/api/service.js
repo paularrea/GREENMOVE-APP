@@ -2,7 +2,7 @@ import axios from "axios";
 
 const service = axios.create({
   baseURL: "http://localhost:4000/api",
-  //withCredentials: true
+  //  withCredentials: true
 });
 
 const errorHandler = (err) => {
