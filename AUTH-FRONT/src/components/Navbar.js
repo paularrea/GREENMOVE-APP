@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import logoutLogo from "../img/sign-out-alt-solid.svg";
 import { withAuth } from "../lib/AuthProvider"; //	<-- UPDATE HERE
-// import {logoutLogo} from "../img/sign-out-alt-solid.svg"
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -22,9 +23,11 @@ class Navbar extends Component {
         <Link to={"/"} id="home-btn"></Link>
         {isLoggedin ? (
           <>
-            <button className="logout" onClick={logout}>
-              <img src= "" alt="Logout"/>
-            </button>{" "}
+            <div className="logout">
+            <a  onClick={logout}>
+              <img className="logoutLogo" src= {logoutLogo} alt="Logout"/>
+            </a>{" "}
+            </div>
             {/* 	<-- UPDATE HERE     */}
           </>
         ) : (

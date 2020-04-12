@@ -9,6 +9,7 @@ const eventSchema = new Schema({
   members:[{ type: Schema.Types.ObjectId, ref: "User"}],
   materials:{type: String},
   duration: {type: String},
+  location: {type: String},
   date:{ type: Date},
   coordinates:[{type: Number}]
 });

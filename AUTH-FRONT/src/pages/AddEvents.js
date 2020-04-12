@@ -16,6 +16,7 @@ class AddEvents extends Component {
       materials: "",
       city: "",
       country: "",
+      location: "",
       creator: this.props.user._id,
       coordinates: []
     };
@@ -113,10 +114,19 @@ class AddEvents extends Component {
             value={this.state.duration || ''}
             onChange={(e) => this.handleChange(e)}
           />
+           <label htmlFor="idLocation">Location</label>
+          <input
+            className="form-control"
+            type="text"
+            name="location"
+            id="idLocation"
+            value={this.state.location || ''}
+            onChange={(e) => this.handleChange(e)}
+          />
         <label  htmlFor="idTime"> <b className ="text-center">Set the Location</b> </label>
         <Map updateLatLng = {e=> this.handleLatLng(e)} coordinates= {this.state.coordinates}/>
       <div className ="text-center">
-      <button className="text-center btn btn-primary text-light" type="submit">
+      <button className="text-center btn btn-primary btn-create text-light" type="submit">
             Create Event
           </button>
           </div>

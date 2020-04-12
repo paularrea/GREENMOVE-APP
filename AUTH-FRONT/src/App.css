@@ -9,6 +9,25 @@
   padding: 0 !important;
 }
 /* Registro */
+.logoutLogo{
+  width: 30px;
+}
+.logout{
+  margin: 15px;
+
+
+}
+.logo-priv{
+  width: 35px;
+}
+.nav-priv p{
+  font-size: 15px;
+  color: black;
+}
+
+.nav-priv{
+  background-color: rgba(255, 255, 255, 0.8);
+}
 .navegacion{
   list-style:none;
   margin:0;
@@ -124,6 +143,9 @@
   display: none;
   }
 /* noticeboard */
+.logo-notice{
+  width: 20px;
+}
 .imgEvent{
   object-fit: cover;
   width: 100%;
@@ -143,16 +165,27 @@
   }
   /* Profile */
 .profileImg{
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
+  }
+
+  .profile-text p {
+    font-size: 25px;
+  }
+
+  .btnEdit{
+    font-size: 20px !important;
+  }
+  .container-page{
+    margin: 30px;
   }
   /* Event details */
   .textDetails{
     font-size: 24px;
     }
-    .btn-primary{
+    .btn-create{
       padding: 0 80px;
       font-size: 25px !important;
     }

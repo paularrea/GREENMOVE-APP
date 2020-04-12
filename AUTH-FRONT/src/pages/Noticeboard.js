@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import locationLogo from "../img/map-marker-alt-solid.svg";
+import membersLogo from "../img/user-friends-solid.svg";
+
 class Noticeboard extends Component {
   constructor() {
     super();
     this.state = { listOfEvents: [] };
   }
   getAllEvents = () => {
-    axios.get(`http://localhost:4000/api/events`).then(responseFromApi => {
+    axios.get(`http://localhost:4000/api/events`).then((responseFromApi) => {
       this.setState({
-        listOfEvents: responseFromApi.data
+        listOfEvents: responseFromApi.data,
       });
     });
   };
@@ -18,16 +21,26 @@ class Noticeboard extends Component {
   }
   render() {
     return (
-      <div className="noticeboard"><p>Noticeboard</p>
+      <div className="noticeboard">
+        <p>Noticeboard</p>
         <div>
-          {this.state.listOfEvents.map(event => {
+          {this.state.listOfEvents.map((event) => {
             return (
               <div key={event._id}>
                 <Link to={`/private/events/${event._id}`}>
-                    <img className="imgEvent" src={event.imageUrl} alt=""/>
-                    <div className="text-noticeboard">
-                  <h3 className="text-dark">{event.title}</h3>
-                  <p className="text-dark">{event.description}</p>
+                  <img className="imgEvent" src={event.imageUrl} alt="" />
+                  <div className="text-noticeboard">
+                    <h3 className="text-dark">{event.title}</h3>
+                    <div className="row justify-content-between">
+                    <div className=" d-flex align-items-center ml-3">
+                      <img className="logo-notice" src={locationLogo} alt="" />
+                      <p className="text-dark m-0 ml-2">{event.location}</p>
+                    </div>
+                    <div className="d-flex align-items-center mr-3">
+                      <img className="logo-notice" src={membersLogo} alt="" />
+                      <p className="text-dark m-0 ml-2">{event.members.length}</p>
+                    </div>
+                    </div>
                   </div>
                 </Link>
                 {/* <p style={{maxWidth: '400px'}} >{event.description} </p> */}
