@@ -1,15 +1,12 @@
 import axios from "axios";
-
 const service = axios.create({
   baseURL: "http://localhost:4000/api",
     withCredentials: true
 });
-
 const errorHandler = (err) => {
   console.error(err);
   throw err;
 };
-
 export default {
   service,
   handleUpload(theFile) {
@@ -27,21 +24,17 @@ export default {
     return service.put("/profile/edit-profile", profileUpdate)
     .then(res => res.data)
     .catch(errorHandler)
-
 },
 addMember(object){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.post("/events", object)
   .then(res => res.data)
   .catch(errorHandler)
-
 },
 getUserInfo(){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.get("/profile")
   .then(res => res.data)
   .catch(errorHandler)
-
 },
-
 };

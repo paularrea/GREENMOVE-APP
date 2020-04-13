@@ -62,14 +62,6 @@ class AuthProvider extends React.Component {
       .then(() => this.setState({ isLoggedin: false, user: null }))
       .catch((err) => console.log(err));
   };
-  // getProfile = () => {
-  //   axios.get(`http://localhost:4000/api/profile`).then(responseFromApi => {
-  //     console.log("responseeeeeee",responseFromApi.data[0])
-  //     this.setState({
-  //       user: responseFromApi.data[0]
-  //     });
-  //   });
-  // };
 
 	
   render() {

@@ -3,18 +3,19 @@ import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import logo from "../img/noun_profile_1669472.png"
 import auth from "../api/service"
-
 class MyProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {user:{}, myAccions:[], joinAccions:[]};
+    this.state = {user:{
+      myAccions:[],
+      joinAccions:[]
+    }};
   }
-  componentDidMount = () => {
-    auth.getUserInfo()
-    this.setState(this.props.user)
+  componentDidMount = async () => {
+   const userInfo = await auth.getUserInfo()
+    this.setState({user: userInfo})
+    console.log(this.state.user.myAccions.length, 'el useeeer')
   }
- 
-   
   render() {
     console.log(this.state.myAccions, 'state')
     return (
@@ -23,14 +24,14 @@ class MyProfile extends Component {
     <div>
     <div className="text-center">
         <h3>{this.state.username}</h3>
-        <img className ="profileImg mt-3 mb-2" src={this.state.imageUrl ? this.state.imageUrl : logo} alt=""/>
+        <img className ="profileImg mt-3 mb-2" src={this.state.user.imageUrl ? this.state.user.imageUrl : logo} alt=""/>
     </div>
     <div className="text-justify profile-text">
-        <p className="mt-4"><b>Name:</b> {this.state.name}</p>
-        <p className="mt-4"><b>Lastname:</b> {this.state.lastName}</p>
-        <p className="mt-4"><b>About me:</b> {this.state.sobreMi}</p>
-        <p className="mt-4">Created actions: {this.state.myAccions.length}</p>
-        <p className="mt-4">Joined actions: {this.state.joinAccions.length}</p>
+        <p className="mt-4"><b>Name:</b> {this.state.user.name}</p>
+        <p className="mt-4"><b>Lastname:</b> {this.state.user.lastName}</p>
+        <p className="mt-4"><b>About me:</b> {this.state.user.sobreMi}</p>
+        <p className="mt-4">Created actions: {this.state.user.myAccions.length}</p>
+        <p className="mt-4">Joined actions: {this.state.user.joinAccions.length}</p>
         <div className="row d-flex justify-content-center text-center">
         <Link to={`/private/edit-profile`}>
           <div className ="col">

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
-import { Redirect } from 'react-router';
+import { Link } from "react-router-dom";
 // import axios from "axios";
-
 class EditProfile extends Component {
     constructor(props) {
         super(props);
@@ -12,21 +11,6 @@ class EditProfile extends Component {
           user:{}
         };
     }
-    
-    // getProfile = () => {
-    //   axios.get(`http://localhost:4000/api/profile`).then(responseFromApi => {
-    //     console.log("responseeeeeee",responseFromApi.data[0])
-    //     this.setState({
-    //       user: responseFromApi.data[0]
-    //     });
-    //   });
-    // };
-  
-    // componentDidMount() {
-    //   this.getProfile(this.state.user);
-    //   this.setState(this.props.user)
-    // }
-    
     handleFileUpload = (e) => {
       console.log("The file to be uploaded is :", e.target.files[0]);
       const uploadData = new FormData();
@@ -40,42 +24,23 @@ class EditProfile extends Component {
         console.log("Error while uploading the file:", err);
       });
     };
-    
-    
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
       e.preventDefault();
-      service
-      .profileUpdate(this.state)
-      .then((res) => {
-        this.setState({ redirect: true })
-        console.log("Edited!", res);
-        
-      })
-      .catch((err) => {
-        console.log("Error while editing the profile:", err);
-      });
-      
+   await service.profileUpdate(this.state)
+  const finalUser =  await service.getUserInfo()    
+        this.setState({finalUser})
+        this.props.history.push("/private/my-profile")
+        console.log("Edited!");
     };
-    
     componentDidMount = () => {
       this.setState(this.props.user)
     }
       handleChange = (e) => {
     const { name, value } = e.target;
     this.setState( {[name]: value })
-        
-        
       };
-
     render() {
-      const { redirect } = this.state;
-
-     if (redirect) {
-       return <Redirect to='/private/my-profile'/>;
-     }
         return (
-           
-            
       <div className="createEvent pb-5 mb-5 m-3">
         
         <h2>Edit User</h2>
@@ -136,6 +101,7 @@ class EditProfile extends Component {
               onChange={(e) => this.handleChange(e)}
             />
           </div>
+          
           <div className="text-center">
           <button  className="btn btn-primary text-light" type="submit">
             Save Profile
@@ -147,5 +113,4 @@ class EditProfile extends Component {
         )
     }
 }
-
 export default withAuth(EditProfile);

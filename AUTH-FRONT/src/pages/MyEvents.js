@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
+import AllEvents from "./AllEvents";
 class MyEvents extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class MyEvents extends Component {
     } else {
       return (
         <div className = "pt-3">
+        <AllEvents/>
           {this.state.MyActions.map((event) => {
             return(
             <div key={event._id}>

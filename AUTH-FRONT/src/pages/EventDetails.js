@@ -24,6 +24,7 @@ class EventDetails extends Component {
     service
     .addMember({eventId: params.id, userId: this.props.user._id })
     .then((res) => {
+      this.props.history.push(`/private/modal/${this.state._id}`);
       console.log("Added", res);
     })
     .catch((err) => {
@@ -112,9 +113,9 @@ class EventDetails extends Component {
           )}
         </Map>
 
-        <Link to ={`/private/modal/${this.state._id}`}>
+       
         <button className= "btn btn-primary" type = "submit" >Join Event</button>
-        </Link>
+      
         <Link to={"/private"}>Back to Events</Link>
         </form>
       </div>

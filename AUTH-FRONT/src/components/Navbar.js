@@ -33,7 +33,7 @@ class Navbar extends Component {
         ) : (
           <>
           <div className="navegacion row">
-            <div className="col login">
+            <div className="col login ml-3">
               <Link to="/login">
                 <button
                   className={this.state.button ? "buttonFalse" : "buttonTrue"}
@@ -43,7 +43,7 @@ class Navbar extends Component {
                 </button>
               </Link>
             </div>
-            <div className="col signup">
+            <div className="col signup mr-3">
               <Link to="/signup">
                 <button
                   className={this.state.button ? "buttonTrue" : "buttonFalse"}
