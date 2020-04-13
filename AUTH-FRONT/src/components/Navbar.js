@@ -17,14 +17,14 @@ class Navbar extends Component {
     });
   }
   render() {
-    const { user, logout, isLoggedin } = this.props; //	<-- UPDATE HERE
+    const {  logout, isLoggedin } = this.props; //	<-- UPDATE HERE
     return (
       <nav>
         <Link to={"/"} id="home-btn"></Link>
         {isLoggedin ? (
           <>
             <div className="logout">
-            <a  onClick={logout}>
+            <a href  onClick={logout}>
               <img className="logoutLogo" src= {logoutLogo} alt="Logout"/>
             </a>{" "}
             </div>

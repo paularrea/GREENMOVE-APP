@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import axios from "axios";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
@@ -22,13 +22,14 @@ class EventDetails extends Component {
    
     e.preventDefault();
     service
-      .addMember({eventId: params.id, userId: this.props.user._id })
-      .then((res) => {
-        console.log("Added", res);
-      })
-      .catch((err) => {
-        console.log("Error while adding the thing:", err);
-      });
+    .addMember({eventId: params.id, userId: this.props.user._id })
+    .then((res) => {
+      console.log("Added", res);
+    })
+    .catch((err) => {
+      console.log("Error while adding the thing:", err);
+    });
+    
   };
 
   getEvent = () => {
@@ -72,8 +73,8 @@ class EventDetails extends Component {
       popupAnchor: [0, -25],
     });
     return (
-      <div className ="pt-3">
-        <button type = "submit" onClick={(e) => this.handleSubmit(e)}>Join Event</button>
+      <div className ="p-3">
+        <form onSubmit ={(e) => this.handleSubmit(e)} >
         <img className= "imgEvent" src={this.state.imageUrl} alt="" />
         <h1 className ="textDetails">{this.state.title}</h1>
         <p>{this.state.description}</p>
@@ -85,10 +86,10 @@ class EventDetails extends Component {
             return(
               
             <div  key={member._id}>
-              
-                <img className="profileImg" src={member.imageUrl} alt="" />
-                <h3 className="textMyEvent text-dark">{member.name}{member.lastName}</h3>
-              
+              <div className = "col text-center">
+                <img className="memberImg" src={member.imageUrl} alt="" />
+                <h3 className="textMyEvent text-dark">{member.name}</h3>
+              </div>
             </div>
             )
           }
@@ -111,7 +112,11 @@ class EventDetails extends Component {
           )}
         </Map>
 
+        <Link to ={`/private/modal/${this.state._id}`}>
+        <button className= "btn btn-primary" type = "submit" >Join Event</button>
+        </Link>
         <Link to={"/private"}>Back to Events</Link>
+        </form>
       </div>
     );
   }

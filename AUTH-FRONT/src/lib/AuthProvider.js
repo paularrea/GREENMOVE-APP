@@ -1,5 +1,6 @@
 import React from "react";
 import auth from "./auth-service";	// Importamos funciones para llamadas axios a la API
+import axios from "axios"
 const { Consumer, Provider } = React.createContext();
 
 // HOC para crear Consumer
@@ -61,17 +62,25 @@ class AuthProvider extends React.Component {
       .then(() => this.setState({ isLoggedin: false, user: null }))
       .catch((err) => console.log(err));
   };
+  // getProfile = () => {
+  //   axios.get(`http://localhost:4000/api/profile`).then(responseFromApi => {
+  //     console.log("responseeeeeee",responseFromApi.data[0])
+  //     this.setState({
+  //       user: responseFromApi.data[0]
+  //     });
+  //   });
+  // };
 
 	
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup } = this;
+    const { login, logout, signup , getProfile} = this;
     
     return (
       isLoading ? 
       <div>Loading</div> 
       :
-      (<Provider value={{ isLoggedin, user, login, logout, signup}} >
+      (<Provider value={{ isLoggedin, user, login, logout, signup, getProfile}} >
          {this.props.children}
       </Provider>)
     )	/*<Provider> "value={}" datos que estarán disponibles para todos los componentes <Consumer> */

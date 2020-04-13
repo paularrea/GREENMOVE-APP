@@ -11,12 +11,15 @@ cloudinary.config({
 
 var storage = cloudinaryStorage({
     cloudinary: cloudinary,
-    folder: 'folder-name',
+    folder: 'Project-3',
     allowedFormats: ['jpg', 'png'],
-    filename: function (req, file, cb) {
-      cb(undefined, 'my-file-name');
+    filename: function (req, res, cb) {
+      let fileName = res.originalname.split(".");
+      cb(null, fileName[0]);
     }
   });
+  
+  
    
   const uploadCloud = multer({ storage: storage });
 

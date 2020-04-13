@@ -12,6 +12,8 @@ import NavbarPrivate from "../components/NavbarPrivate";
 import EditProfile from "./EditProfile";
 import JoinEvents from "./JoinEvents";
 import AllEvents from "./AllEvents";
+import Modal from "./Modal";
+import ModalCreate from "./ModalCreate";
 
 
 
@@ -32,6 +34,9 @@ class Private extends Component {
           <Route exact path="/private/my-profile" component={MyProfile} /> 
           <Route exact path="/private/edit-profile" component={EditProfile} />
           <Route exact path="/private/events/:id" component={EventDetails} />
+          <Route exact path="/private/modal/:id" component={Modal} />
+          <Route exact path="/private/modal-create" component={ModalCreate} />
+         
         </Switch>
         <NavbarPrivate/>
      

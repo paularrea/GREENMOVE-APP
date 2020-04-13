@@ -27,10 +27,12 @@ router.get("/join-events/:id", async (req, res, next) => {
   }
 });
 router.get("/profile", (req, res, next) => {
-  User.find()
+ const userId = req.session.currentUser.id
+  User.findById(userId)
    
-    .then(allTheUsers => {
-      res.json(allTheUsers);
+    .then((user) => {
+      console.log(user)
+      res.json(user);
     })
     .catch(err => {
       res.json(err);

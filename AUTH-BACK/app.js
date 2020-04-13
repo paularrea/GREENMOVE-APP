@@ -26,9 +26,28 @@ mongoose
   })
   .then(() => console.log(`Connected to database`))
   .catch((err) => console.error(err));
-
-// EXPRESS SERVER INSTANCE
-const app = express();
+  
+  // EXPRESS SERVER INSTANCE
+  const app = express();
+      app.use(
+        session({
+          store: new MongoStore({
+            autoRemove:"interval",
+            autoRemoveInterval: 10,
+            mongooseConnection: mongoose.connection,
+            ttl: 24 * 60 * 60, // 1 day
+          }),
+          secret: process.env.SECRET_SESSION,
+          resave: false,
+          saveUninitialized: false,
+          unset: "destroy",
+          name:"userCookie",
+          cookie: {
+            maxAge: 24 * 60 * 60 * 1000,
+            sameSite: "none"
+          },
+        })
+      );
 
 // CORS MIDDLEWARE SETUP
 app.use(
@@ -38,22 +57,7 @@ app.use(
   })
 );
 
-
 // SESSION MIDDLEWARE
-app.use(
-  session({
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60, // 1 day
-    }),
-    secret: process.env.SECRET_SESSION,
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000,
-    },
-  })
-);
 
 // MIDDLEWARE
 app.use(logger("dev"));

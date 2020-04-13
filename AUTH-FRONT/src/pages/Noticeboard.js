@@ -30,7 +30,7 @@ class Noticeboard extends Component {
                 <Link to={`/private/events/${event._id}`}>
                   <img className="imgEvent" src={event.imageUrl} alt="" />
                   <div className="text-noticeboard">
-                    <h3 className="text-dark">{event.title}</h3>
+                    <h4 className="text-dark">{event.title}</h4>
                     <div className="row justify-content-between">
                     <div className=" d-flex align-items-center ml-3">
                       <img className="logo-notice" src={locationLogo} alt="" />

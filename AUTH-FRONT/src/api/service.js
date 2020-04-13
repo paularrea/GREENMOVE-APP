@@ -2,7 +2,7 @@ import axios from "axios";
 
 const service = axios.create({
   baseURL: "http://localhost:4000/api",
-  //  withCredentials: true
+    withCredentials: true
 });
 
 const errorHandler = (err) => {
@@ -32,6 +32,13 @@ export default {
 addMember(object){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.post("/events", object)
+  .then(res => res.data)
+  .catch(errorHandler)
+
+},
+getUserInfo(){
+  //necesito enviar al back la id del evento. la id de mi usuario 
+  return service.get("/profile")
   .then(res => res.data)
   .catch(errorHandler)
 

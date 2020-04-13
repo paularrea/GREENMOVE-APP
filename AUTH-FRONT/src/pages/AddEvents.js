@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
 import Map from "../components/Map"
+import { Link } from "react-router-dom";
 class AddEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
       description: "",
-      imageUrl: "",
+      imageUrl: [],
       street: "",
       postalCode: "",
       duration: "",
@@ -18,7 +19,8 @@ class AddEvents extends Component {
       country: "",
       location: "",
       creator: this.props.user._id,
-      coordinates: []
+      coordinates: [],
+     
     };
   }
   handleChange = (e) => {
@@ -29,13 +31,13 @@ class AddEvents extends Component {
     this.setState({coordinates:e});
   }
   handleFileUpload = (e) => {
-    console.log("The file to be uploaded is :", e.target.files[0]);
+    console.log("The file to be uploaded is :", e.target.files);
     const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
+    uploadData.append("imageUrl", e.target.files);
     service
       .handleUpload(uploadData)
       .then((response) => {
-        this.setState({ imageUrl: response.secure_url });
+        this.setState([{ imageUrl: response.secure_url }]);
       })
       .catch((err) => {
         console.log("Error while uploading the file:", err);
@@ -52,9 +54,10 @@ class AddEvents extends Component {
         console.log("Error while adding the thing:", err);
       });
   };
+  
   render() {
     return (
-      <div className="container-pages">
+      <div className="container-pages p-3">
       <div className="createEvent pb-5 mb-5">
         <h2>New Event</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -66,7 +69,7 @@ class AddEvents extends Component {
               id="idImage"
               aria-describedby="image"
               placeholder="Event Image"
-              onChange={(e) => this.handleFileUpload(e)}
+              multiple onChange={(e) => this.handleFileUpload(e)}
             />
           </div>
           <div className="form-group">
@@ -126,9 +129,9 @@ class AddEvents extends Component {
         <label  htmlFor="idTime"> <b className ="text-center">Set the Location</b> </label>
         <Map updateLatLng = {e=> this.handleLatLng(e)} coordinates= {this.state.coordinates}/>
       <div className ="text-center">
-      <button className="text-center btn btn-primary btn-create text-light" type="submit">
-            Create Event
-          </button>
+        <Link to = {`/private/modal-create`}>
+      <button className="text-center btn btn-primary btn-create text-light" type="submit">Create Event</button>
+          </Link>
           </div>
         </form>
         </div>

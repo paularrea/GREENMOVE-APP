@@ -11,25 +11,32 @@ class NavbarPrivate extends Component {
 
   
     return (
+     <div className="pt-3">
       <div className = "mt-5 pt-5"> 
       <nav className="nav-priv navbar fixed-bottom navbar-expand-lg ">
         {
          
           (<> <div className="d-flex justify-content-center">
             <Link className="navbar-brand text-light" to="/private">
+            <div className = "col text-center">
               <img className="logo-priv" src={noticeLogo} alt="noticeboard"/>
               <p>Explore</p>
+            </div>
             </Link>
             </div>
           
             <Link className="navbar-brand text-light" to="/private/all-events">
+            <div className = "col text-center">
             <img className="logo-priv" src={activityLogo} alt="activity"/>
             <p>Activity</p>
+            </div>
             </Link>
 
             <Link className="navbar-brand text-light" to="/private/notifications">
+            <div className = "col text-center">
             <img className="logo-priv" src={inboxLogo} alt="inbox"/>
             <p>Inbox</p>
+            </div>
             </Link>
            
             {/* <Link className="navbar-brand text-light" to="/private/add-events">
@@ -38,13 +45,16 @@ class NavbarPrivate extends Component {
               <br /> */}
 
             <Link className="navbar-brand text-light" to="/private/my-profile">
+            <div className = "col text-center">
             <img className="logo-priv" src={profileLogo} alt="profile"/>
             <p>Profile</p>
+            </div>
             </Link>
            
           </>)
         }
       </nav>
+      </div>
       </div>
     );
   }

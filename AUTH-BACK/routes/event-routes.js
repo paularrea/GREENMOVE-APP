@@ -21,14 +21,14 @@ router.get("/events", (req, res, next) => {
 
 
 router.post('/events/create', async (req, res, next) => {
-  console.log(req.body, 'test')
-  const {_id} = req.body
+  const userId = req.session.currentUser._id
+  console.log(userId, 'test')
   try{
   const newEvent = await Event.create(req.body)
   res.status(200).json(newEvent);
  
-  await User.updateOne(   
-         _id ,
+  await User.findByIdAndUpdate(   
+         userId ,
         { $push:{myAccions: newEvent._id}}
       );
   
@@ -38,7 +38,8 @@ router.post('/events/create', async (req, res, next) => {
 })
 //JOIN
 router.post('/events', async (req, res, next) => {
- console.log(req.body, "object")
+//  console.log(req.body, "object")
+ console.log('responseeeeee currentUser', req.session.currentUser)
   const eventId = req.body.eventId; //evento id
   const userId = req.body.userId 
   console.log(userId)
@@ -65,7 +66,6 @@ router.get('/events/:id',  (req, res, next)=>{
     }
     Event.findById(req.params.id).populate("members") 
       .then(response => {
-        console.log('responseeeeee Members', response)
         res.status(200).json(response);
       })
       .catch(err => {

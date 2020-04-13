@@ -76,13 +76,17 @@ class EditProfile extends Component {
         return (
            
             
-      <div className="createEvent pb-5 mb-5">
+      <div className="createEvent pb-5 mb-5 m-3">
         
         <h2>Edit User</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="form-group">
-            <label htmlFor="idProfileImg">Edit profile image</label>
+            
+            <div className="col text-center pb-3">
+            <p htmlFor="idProfileImg">Edit profile image</p>
             <img className ="profileImg" src={this.state.imageUrl} alt=""/>
+            </div>
+            
             <input
               type="file"
               className="form-control"
@@ -132,10 +136,11 @@ class EditProfile extends Component {
               onChange={(e) => this.handleChange(e)}
             />
           </div>
-    
+          <div className="text-center">
           <button  className="btn btn-primary text-light" type="submit">
             Save Profile
           </button>
+          </div>
           
         </form>
             </div>
