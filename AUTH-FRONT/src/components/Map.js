@@ -28,11 +28,12 @@ class Map extends React.Component {
         zoom: map.getZoom().toFixed(2)
         },()=>this.props.updateLatLng([Number(this.state.lat),Number(this.state.lng)]));
         });
-        var geocoder = new MapboxGeocoder({
+        map.addControl(
+          new MapboxGeocoder({
           accessToken: mapboxgl.accessToken,
           mapboxgl: mapboxgl
-          });
-          map.addControl(geocoder);    
+          })
+          );   
       }
       render() {
         return (

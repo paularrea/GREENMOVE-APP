@@ -1,4 +1,4 @@
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import axios from "axios";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
@@ -76,6 +76,7 @@ class EventDetails extends Component {
     return (
       <div className ="p-3">
         <form onSubmit ={(e) => this.handleSubmit(e)} >
+          
         <img className= "imgEvent" src={this.state.imageUrl} alt="" />
         <h1 className ="textDetails">{this.state.title}</h1>
         <p>{this.state.description}</p>
@@ -86,7 +87,7 @@ class EventDetails extends Component {
           {this.state.members.map((member) => {
             return(
               
-            <div  key={member._id}>
+            <div>
               <div className = "col text-center">
                 <img className="memberImg" src={member.imageUrl} alt="" />
                 <h3 className="textMyEvent text-dark">{member.name}</h3>
@@ -113,9 +114,7 @@ class EventDetails extends Component {
           )}
         </Map>
 
-       
-        <button className= "btn btn-primary" type = "submit" >Join Event</button>
-      
+       <div className="text-center"><button className= "btn btn-primary" type = "submit" >Join Event</button></div>
         <Link to={"/private"}>Back to Events</Link>
         </form>
       </div>

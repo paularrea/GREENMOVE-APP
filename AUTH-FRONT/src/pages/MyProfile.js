@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import logo from "../img/noun_profile_1669472.png"
+import accions from "../img/modalCreate.png"
+import joinMod from "../img/actions.png"
 import auth from "../api/service"
 class MyProfile extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class MyProfile extends Component {
     console.log(this.state.myAccions, 'state')
     return (
       <div className="container-page d-flex justify-content-center">
-       
+
     <div>
     <div className="text-center">
         <h3>{this.state.username}</h3>
@@ -30,8 +32,14 @@ class MyProfile extends Component {
         <p className="mt-4"><b>Name:</b> {this.state.user.name}</p>
         <p className="mt-4"><b>Lastname:</b> {this.state.user.lastName}</p>
         <p className="mt-4"><b>About me:</b> {this.state.user.sobreMi}</p>
-        <p className="mt-4">Created actions: {this.state.user.myAccions.length}</p>
-        <p className="mt-4">Joined actions: {this.state.user.joinAccions.length}</p>
+        <div className="row d-flex align-items-center">
+        <p className="mt-4 mr-2">Created actions: {this.state.user.myAccions.length}</p>
+        <img className="medalProfile" src={accions} alt="" srcset=""/>
+        </div>
+        <div className="row d-flex align-items-center"> 
+        <p className="mt-4 mr-2">Joined actions: {this.state.user.joinAccions.length}</p>
+        <img className="medalProfile" src={joinMod} alt="" srcset=""/>
+        </div>
         <div className="row d-flex justify-content-center text-center">
         <Link to={`/private/edit-profile`}>
           <div className ="col">

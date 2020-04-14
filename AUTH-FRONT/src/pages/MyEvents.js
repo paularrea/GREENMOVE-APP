@@ -41,7 +41,7 @@ class MyEvents extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className = "pt-3">
+        <div className = "pt-3 m-3">
         <AllEvents/>
           {this.state.MyActions.map((event) => {
             return(
@@ -49,7 +49,7 @@ class MyEvents extends Component {
               <Link to={`/private/events/${event._id}`}>
                 <img className="imgMyEvent" src={event.imageUrl} alt="" />
                 <h3 className="textMyEvent text-dark">{event.title}</h3>
-                <p className="text-dark">{event.description}</p>
+                <p className="text-dark">{event.location}</p>
               </Link>
             </div>
             )

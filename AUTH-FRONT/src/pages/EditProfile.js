@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
-import { Link } from "react-router-dom";
+
 // import axios from "axios";
 class EditProfile extends Component {
     constructor(props) {

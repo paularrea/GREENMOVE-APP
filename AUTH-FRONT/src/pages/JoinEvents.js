@@ -42,15 +42,15 @@ class JoinEvents extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className = "pt-3">
+        <div className = "pt-3 m-3">
         <AllEvents/>
           {this.state.joinAccions.map((event) => {
             return(
-            <div key={event._id}>
+            <div>
               <Link to={`/private/events/${event._id}`}>
                 <img className="imgMyEvent" src={event.imageUrl} alt="" />
                 <h3 className="textMyEvent text-dark">{event.title}</h3>
-                <p className="text-dark">{event.description}</p>
+                <p className="text-dark">{event.location}</p>
               </Link>
             </div>
             )

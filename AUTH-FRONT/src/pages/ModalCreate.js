@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 import  modalCreate  from "../img/modalCreate.png"
 import { withAuth } from "../lib/AuthProvider";
-import axios from "axios";
+
 class ModalCreate  extends Component{
   constructor(props){
     super(props)

@@ -1,6 +1,5 @@
 import React from "react";
 import auth from "./auth-service";	// Importamos funciones para llamadas axios a la API
-import axios from "axios"
 const { Consumer, Provider } = React.createContext();
 
 // HOC para crear Consumer

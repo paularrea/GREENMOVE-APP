@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider"; //	<-- UPDATE HERE
-import MyEvents from "./MyEvents";
-import JoinEvents from "./JoinEvents";
 
 class AllEvents extends Component {
   constructor(props) {
@@ -18,36 +16,21 @@ class AllEvents extends Component {
     });
   }
   render() {
-    const { logout, isLoggedin } = this.props; //	<-- UPDATE HERE
-    // if (this.state.button){
-    //     <MyEvents/>
-    // } else {
-    //     <JoinEvents/>
-    // }
+  
     return (
-      <nav>
-        <div className="navegacion row">
-          <div className="col login ml-3">
-            <Link to="/private/my-actions">
-              <button
-                className={this.state.button ? "buttonFalse" : "buttonTrue"}
-                onClick={this.handleClick}
-              >
-                My Actions
-              </button>
-            </Link>
-          </div>
-          <div className="col signup mr-3">
-            <Link to="/private/join-actions">
-              <button
-                className={this.state.button ? "buttonTrue" : "buttonFalse"}
-                onClick={this.handleClick}
-              >
-                Joined Actions
-              </button>
-            </Link>
-          </div>
-        </div>
+      <nav >
+        <div className="btn-group-active row d-flex justify-content-center " data-toggle="buttons" role="group" aria-label="Basic example">
+          <div className="m-2">
+        <Link to="/private/my-actions">
+  <button type="radio" id="1" className="btn btn-primary">My Actions</button>
+  </Link>
+  </div>
+  <div className="m-2">
+  <Link to="/private/join-actions">
+  <button type="radio" id="2"className="btn btn-primary">Join Actions</button>
+  </Link>
+  </div>
+</div>
       </nav>
     );
   }

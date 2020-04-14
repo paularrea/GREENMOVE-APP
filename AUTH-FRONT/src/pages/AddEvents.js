@@ -62,10 +62,18 @@ class AddEvents extends Component {
           <h2>New Event</h2>
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <div className="form-group">
-              <label htmlFor="idImage">Add Event Image</label>
+            <label htmlFor="idTime">
+              {" "}
+              <b className="text-center">Set the Location</b>{" "}
+            </label>
+            <Map
+              updateLatLng={(e) => this.handleLatLng(e)}
+              coordinates={this.state.coordinates}
+            />
+              <label className="pt-3" htmlFor="idImage">Add Event Image</label>
               <input
                 type="file"
-                className="form-control"
+                className="form-control "
                 id="idImage"
                 aria-describedby="image"
                 placeholder="Event Image"
@@ -119,22 +127,15 @@ class AddEvents extends Component {
             />
             <label htmlFor="idLocation">Location</label>
             <input
-              className="form-control"
+              className="form-control "
               type="text"
               name="location"
               id="idLocation"
               value={this.state.location || ""}
               onChange={(e) => this.handleChange(e)}
             />
-            <label htmlFor="idTime">
-              {" "}
-              <b className="text-center">Set the Location</b>{" "}
-            </label>
-            <Map
-              updateLatLng={(e) => this.handleLatLng(e)}
-              coordinates={this.state.coordinates}
-            />
-            <div className="text-center">
+           
+            <div className="text-center pt-5">
               <button
                 className="text-center btn btn-primary btn-create text-light"
                 type="submit"
