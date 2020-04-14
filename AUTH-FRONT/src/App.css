@@ -13,7 +13,14 @@ top: 7px !important;
   height: 35px !important;
   border: 1px solid rgb(201, 201, 201) !important;
 }
-
+.textAreaCreator{
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.textAreaCreator textarea{
+  width: 100%;
+  height: auto;
+}
 .App {
   padding: 20px;;
 }

@@ -127,5 +127,20 @@ await User.updateOne({_id: userId},
       console.log(err)
     }
 })
+router.post('/events/members-message', async (req, res, next)=>{
+  //console.log('responseeeeee currentUser', req.session.currentUser)
+  const eventId = req.body.eventId; //evento id
+
+  try{
+
+const allMembers = await Event.findByIdAndUpdate(eventId).populate("members",
+    { $push:{notifications: allMembers.notifications}})
+  res.status(200).json('deleted from joinAccions');
+  
+    }catch( err ){
+      console.log(err)
+    }
+})
+
 
 module.exports = router;

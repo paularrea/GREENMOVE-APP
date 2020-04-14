@@ -14,8 +14,14 @@ class EventDetails extends Component {
       coordinates: "",
       members: [],
       creator: "",
+      notifications: "",
     };
   }
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(this.state.notifications, "holaaaaaaNotifications");
+    this.setState({ [name]: value });
+  };
   handleSubmit = (e) => {
     const { params } = this.props.match;
     console.log(params.id, "id del evento");
@@ -23,10 +29,11 @@ class EventDetails extends Component {
     console.log("members", this.state.creator);
     e.preventDefault();
 
-
-    let result = this.state.members.findIndex((user) => user._id === this.props.user._id);
-    console.log(result)
-    if (result>-1) {
+    let result = this.state.members.findIndex(
+      (user) => user._id === this.props.user._id
+    );
+    console.log(result);
+    if (result > -1) {
       return service
         .deleteMember({ eventId: params.id, userId: this.props.user._id })
         .then((res) => {
@@ -39,7 +46,20 @@ class EventDetails extends Component {
     }
 
     if (this.props.user._id === this.state.creator) {
-      return alert("soy el creador");
+      console.log(this.state.notifications,"jamonYoooooork");
+      return service
+        .addMessage({
+          eventId: params.id,
+          members: this.state.members.map((member) => member._id),
+          notifications: this.state.notifications,
+        })
+        .then((res) => {
+          this.props.history.push(`/private/modal/${this.state._id}`);
+          console.log("Added", res);
+        })
+        .catch((err) => {
+          console.log("Error while adding the thing:", err);
+        });
     } else {
       return service
         .addMember({ eventId: params.id, userId: this.props.user._id })
@@ -52,22 +72,6 @@ class EventDetails extends Component {
         });
     }
   };
-
-  // changeButton = () => {
-  //   this.state.members.map((user) => {
-  //     if (this.props.user._id === user._id) {
-  //       console.log("you are already joining the event");
-  //       return (<button>Unjoin</button>)
-  //     }
-  //   })
-
-  //     if (this.props.user._id === this.state.creator) {
-  //       return alert("soy el creador");
-  //     } else {
-  //       return (<button>join</button>)
-  //       ;
-  //     }
-  //   };
 
   getEvent = () => {
     const { params } = this.props.match;
@@ -113,6 +117,16 @@ class EventDetails extends Component {
     return (
       <div className="p-3">
         <form onSubmit={(e) => this.handleSubmit(e)}>
+          <BottonJoin
+            type="submit"
+            userId={this.props.user._id}
+            members={this.state.members}
+            creator={this.state.creator}
+            ref={(element) => {
+              this.child = element;
+            }}
+          />
+
           <img className="imgEvent" src={this.state.imageUrl} alt="" />
           <h1 className="textDetails">{this.state.title}</h1>
           <p>{this.state.description}</p>
@@ -148,11 +162,6 @@ class EventDetails extends Component {
             )}
           </Map>
 
-          <BottonJoin
-            type="submit"
-            userId={this.props.user._id}
-            members={this.state.members}
-          />
           <Link to={"/private"}>Back to Events</Link>
         </form>
       </div>

@@ -37,6 +37,12 @@ deleteMember(object){
   .then(res => res.data)
   .catch(errorHandler)
 },
+addMessage(object){
+  //necesito enviar al back la id del evento. la id de mi usuario 
+  return service.post("/events/members-message", object)
+  .then(res => res.data)
+  .catch(errorHandler)
+},
 getUserInfo(){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.get("/profile")
