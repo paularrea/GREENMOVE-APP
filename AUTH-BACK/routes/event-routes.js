@@ -106,4 +106,26 @@ router.get('/events/:id',  (req, res, next)=>{
       })
   })
 
+
+
+  router.post('/events/remove-member', async (req, res, next)=>{
+  //console.log('responseeeeee currentUser', req.session.currentUser)
+  const eventId = req.body.eventId; //evento id
+  const userId = req.body.userId 
+  console.log(userId)
+  try{
+
+await Event.updateOne({_id: eventId},
+      { $pull:{members: userId}})
+  
+
+await User.updateOne({_id: userId},
+    { $pull:{joinAccions: eventId}})
+  res.status(200).json('deleted from joinAccions');
+  
+    }catch( err ){
+      console.log(err)
+    }
+})
+
 module.exports = router;

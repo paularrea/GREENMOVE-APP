@@ -3,7 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
-import AllEvents from "./AllEvents";
+
 class MyEvents extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class MyEvents extends Component {
       .get(`http://localhost:4000/api/my-events/${this.props.user._id}`)
       .then((responseFromApi) => {
         console.log("responseeeeeee", responseFromApi.data);
-        
+
         this.setState({
           MyActions: responseFromApi.data.myAccions,
         });
@@ -41,20 +41,41 @@ class MyEvents extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className = "pt-3 m-3">
-        <AllEvents/>
-          {this.state.MyActions.map((event) => {
-            return(
-            <div key={event._id}>
-              <Link to={`/private/events/${event._id}`}>
-                <img className="imgMyEvent" src={event.imageUrl} alt="" />
-                <h3 className="textMyEvent text-dark">{event.title}</h3>
-                <p className="text-dark">{event.location}</p>
-              </Link>
+        <div className="pt-3 m-3">
+          <nav>
+            <div
+              className="btn-group-active row d-flex justify-content-center "
+              data-toggle="buttons"
+              role="group"
+              aria-label="Basic example"
+            >
+              <div className="m-2">
+                <Link to="/private/my-actions">
+                  <button type="radio" id="1" className="btn btn-dark">
+                    My Actions
+                  </button>
+                </Link>
+              </div>
+              <div className="m-2">
+                <Link to="/private/join-actions">
+                  <button type="radio" id="2" className="btn btn-primary">
+                    Join Actions
+                  </button>
+                </Link>
+              </div>
             </div>
-            )
-          }
-          )}
+          </nav>
+          {this.state.MyActions.map((event) => {
+            return (
+              <div key={event._id}>
+                <Link to={`/private/events/${event._id}`}>
+                  <img className="imgMyEvent" src={event.imageUrl} alt="" />
+                  <h3 className="textMyEvent text-dark">{event.title}</h3>
+                  <p className="text-dark">{event.location}</p>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       );
     }
