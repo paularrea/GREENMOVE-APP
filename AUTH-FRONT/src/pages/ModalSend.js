@@ -15,18 +15,18 @@ class ModalSend  extends Component{
   }
   render() {
     return (
-        <div className = "">
+      <div className = "mt-5">
           <div className ="text-center">
             <img className="modalImg" src={send} alt="" srcset=""/>
         </div>
-          <div className = "text-center mt-5 textModal">
+          <div className = "text-center mt-4 textModal">
           <p>Hi <b>{this.state.name}</b> !</p>
           <p>Your message has been</p>
           <p> sent to all the members </p>
           <p>of this action</p>
           
           </div>
-          <div className = "text-center mt-5 textModal2 mb-5">
+          <div className = "text-center mt-4 textModal2 mb-3">
             <p><i>You must be the change you want</i> </p>
             <p> <i>to see in the world</i> </p>
             <p> <i>- Gandhi</i></p>

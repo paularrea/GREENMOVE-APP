@@ -8,7 +8,8 @@ class AddEvents extends Component {
     super(props);
     this.state = {
       title: "",
-      description: "",
+      descriptionProblem: "",
+      descriptionSolution: "",
       imageUrl: "",
       street: "",
       postalCode: "",
@@ -94,15 +95,28 @@ class AddEvents extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="idDescription">Description</label>
+              <label htmlFor="idDescriptionProblem">Problem</label>
               <textarea
                 className="form-control"
-                id="idDescription"
+                id="idDescriptionProblem"
                 aria-describedby="Description"
-                placeholder="Event Description"
+                placeholder="What is the problem?"
                 type="text"
-                name="description"
-                value={this.state.description || ""}
+                name="descriptionProblem"
+                value={this.state.descriptionProblem || ""}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="idDescriptionSolution">Solution</label>
+              <textarea
+                className="form-control"
+                id="idDescriptionSolution"
+                aria-describedby="DescriptionSol"
+                placeholder="What is your solution?"
+                type="text"
+                name="descriptionSolution"
+                value={this.state.descriptionSolution || ""}
                 onChange={(e) => this.handleChange(e)}
               />
             </div>
@@ -137,7 +151,7 @@ class AddEvents extends Component {
            
             <div className="text-center pt-5">
               <button
-                className="text-center btn btn-primary btn-create text-light"
+                className="text-center btn btnBlue"
                 type="submit"
               >
                 Create Event

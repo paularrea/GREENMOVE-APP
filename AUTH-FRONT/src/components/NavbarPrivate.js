@@ -13,7 +13,7 @@ class NavbarPrivate extends Component {
     return (
      <div className="pt-3">
       <div className = "mt-5 pt-5"> 
-      <nav className="nav-priv navbar fixed-bottom navbar-expand-lg ">
+      <nav className="nav-priv navbar fixed-bottom ">
         {
          
           (<> <div className="d-flex justify-content-center align-items-center">

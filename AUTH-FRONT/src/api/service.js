@@ -49,6 +49,8 @@ getNotiInfo(){
   .catch(errorHandler)
 },
 
+
+
 getUserInfo(){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.get("/profile")

@@ -35,6 +35,14 @@ top: 7px !important;
   font-size: 20px !important;
   padding: 6px 30px !important;
 }
+.btnBlue :hover{
+  background-color: #A5E9EA !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 6px 30px !important;
+}
 .btnBlue2{
   background-color: rgb(226, 250, 250) !important;
   border: 2px solid #A5E9EA !important;
@@ -61,10 +69,27 @@ top: 7px !important;
   position: absolute;
   width: 30px;
 }
+/* .bottonFixed{
+  display: flex;
+  position: fixed;
+  z-index: 999999999;
+  bottom: 120px;
+  right: 30px;
 
+} */
 
+.aboutme{
+  line-height: 30px !important;
+}
+.navbar-brand .col{
+  padding: 0;
+}
 .logo-priv{
   width: 35px;
+}
+.logo-edit{
+  width: 25px;
+ 
 }
 .nav-priv p{
   font-size: 15px;
@@ -208,8 +233,32 @@ top: 7px !important;
 .imgMyEvent{
   object-fit: cover;
   width: 100%;
-  height: 100px;
+  height: 150px;
+  border-radius: 5px;
   }
+.eventGroup div{
+  padding: 10px;
+  }
+.fotosMembers div{
+  padding: 0;
+  margin-left: 5px;
+}
+.fotosMembers span{
+  margin-left: 20px;
+  font-size: 12px;
+  margin-top:10px;
+  color: #909090;
+  
+}
+.messageNoti{
+  max-width: 300px;
+}
+.fotosMembers {
+  padding-left: 15px;
+}
+.eventGroup {
+    padding: 10px;
+    }
 .textMyEvent{
   font-size: 10px;
   }
@@ -250,7 +299,7 @@ top: 7px !important;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.5);
   }
   .colorTitleNoti{
 color: gray;
@@ -299,12 +348,19 @@ font-weight: 100;
     margin: auto 0;
   }
   .memberImg{
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
   }
-
+  .creatorImg{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
   .profile-text p {
     font-size: 20px;
     line-height : 20px;
@@ -323,8 +379,17 @@ font-weight: 100;
     margin: 30px;
   }
   /* Event details */
-  .textDetails{
-    font-size: 24px;
+  .fechayhora{
+    color:grey;
+    margin: 10px; 
+    font-weight: 200;
+  }
+
+  
+  .titleDetails{
+    font-size: 30px;
+    margin: 10px;
+    
     }
     .btn-create{
       padding: 0 80px;

@@ -46,7 +46,7 @@ class Message extends Component {
      if (this.props.creator === this.props.userId) { //console.log(result);
     return (
       <form onSubmit ={(e)=> this.handleSubmit(e)}>
-        <div className="text-center">
+        <div className="text-center ">
           <div>
            
             <label className="someAdd">Something to add?</label>

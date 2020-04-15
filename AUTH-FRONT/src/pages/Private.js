@@ -41,7 +41,6 @@ class Private extends Component {
          
         </Switch>
         <NavbarPrivate/>
-     
       </div>
     );
   }

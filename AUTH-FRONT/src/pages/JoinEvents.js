@@ -45,7 +45,7 @@ class JoinEvents extends Component {
           <nav>
             <h3 className ="text-center mb-3">Actions</h3>
             <div
-              className="btn-group-active row d-flex justify-content-around mb-4"
+              className="btn-group-active row d-flex justify-content-around "
               data-toggle="buttons"
               role="group"
               aria-label="Basic example"
@@ -66,9 +66,10 @@ class JoinEvents extends Component {
               </div>
             </div>
           </nav>
+          <div className = "row d-flex justify-content-between eventGroup">
           {this.state.joinAccions.map((event) => {
             return (
-              <div>
+              <div className = "col-6">
                 <Link to={`/private/events/${event._id}`}>
                   <img className="imgMyEvent" src={event.imageUrl} alt="" />
                   <h3 className="textMyEvent text-dark">{event.title}</h3>
@@ -77,6 +78,7 @@ class JoinEvents extends Component {
               </div>
             );
           })}
+          </div>
         </div>
       );
     }

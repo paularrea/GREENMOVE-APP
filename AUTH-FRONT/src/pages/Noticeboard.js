@@ -22,8 +22,8 @@ class Noticeboard extends Component {
   render() {
    
     return (
-      <div className="pt-3 ">
-        <h3 className ="text-center mb-5">Explore</h3>
+      <div className="pt-4 ">
+        <h3 className ="text-center mb-4">Explore</h3>
         <div>
           {this.state.listOfEvents.map((event) => {
             return (

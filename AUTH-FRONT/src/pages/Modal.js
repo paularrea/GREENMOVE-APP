@@ -28,7 +28,7 @@ class Modal  extends Component{
   }
   render() {
     return (
-        <div className = "">
+        <div className = "mt-5">
           <div className ="text-center">
             <img className="modalImg" src={activityLogo} alt="" srcset=""/>
         </div>

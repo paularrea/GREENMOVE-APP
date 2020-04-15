@@ -61,34 +61,37 @@ router.post("/events/remove-member", async (req, res, next) => {
 });
 router.put("/events/message", async (req, res, next) => {
   const message = req.body.notifications;
-   const members = req.body.members;
-   const eventId = req.body.eventId
-   const creatorId = req.body.creator
-   const notificationsId = {message, eventId, creatorId}
-   
+  const members = req.body.members;
+  const eventId = req.body.eventId;
+  const creatorId = req.body.creator;
+  const notificationsId = { message, eventId, creatorId };
+
   //   console.log(message)
-    // console.log(members, "holaaaa");
-    console.log(notificationsId,'el Member')
+  // console.log(members, "holaaaa");
+  console.log(notificationsId, "el Member");
   try {
-     await members.map(async (member) => {
-      const oneMember = member._id
-      console.log(message)
-      await User.findByIdAndUpdate(oneMember,{$push:{notifications: notificationsId}})
-     
-       });
-      res.status(200).json("sended to members");
+    await members.map(async (member) => {
+      const oneMember = member._id;
+      console.log(message);
+      await User.findByIdAndUpdate(oneMember, {
+        $push: { notifications: notificationsId },
+      });
+    });
+    res.status(200).json("sended to members");
   } catch (err) {
     console.log(err);
   }
 });
 router.get("/events/message", async (req, res, next) => {
-  try{
-    let userId = req.session.currentUser._id
-  eventInfo = await User.findById(userId).populate('notifications.eventId').populate('notifications.creatorId')
-   console.log(eventInfo)
-  res.json(eventInfo)
-  }catch(err){
-  res.json(err)
+  try {
+    let userId = req.session.currentUser._id;
+    eventInfo = await User.findById(userId)
+      .populate("notifications.eventId")
+      .populate("notifications.creatorId");
+    console.log(eventInfo);
+    res.json(eventInfo);
+  } catch (err) {
+    res.json(err);
   }
 });
 
@@ -98,7 +101,9 @@ router.get("/events/:id", (req, res, next) => {
     return;
   }
   Event.findById(req.params.id)
+    .populate("creator")
     .populate("members")
+
     .then((response) => {
       res.status(200).json(response);
     })
@@ -140,7 +145,5 @@ router.delete("/events/:id", (req, res, next) => {
       res.json(err);
     });
 });
-
-
 
 module.exports = router;

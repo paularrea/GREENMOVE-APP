@@ -66,9 +66,10 @@ class MyEvents extends Component {
               </div>
             </div>
           </nav>
+          <div className = "row d-flex justify-content-between eventGroup">
           {this.state.MyActions.map((event) => {
             return (
-              <div key={event._id}>
+              <div className = "col-6">
                 <Link to={`/private/events/${event._id}`}>
                   <img className="imgMyEvent" src={event.imageUrl} alt="" />
                   <h3 className="textMyEvent text-dark">{event.title}</h3>
@@ -77,6 +78,7 @@ class MyEvents extends Component {
               </div>
             );
           })}
+        </div>
         </div>
       );
     }

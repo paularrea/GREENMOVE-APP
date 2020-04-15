@@ -31,7 +31,7 @@ class MyProfile extends Component {
     <div className="text-center">
       <div>
     <Link to={`/private/edit-profile`}>
-        <button className="btnBorder "><img className="logo-priv" src={edit} alt=""/></button>
+        <button className="btnBorder "><img className="logo-edit" src={edit} alt=""/></button>
          </Link>
   </div> 
       <div className="text-center">
@@ -45,7 +45,7 @@ class MyProfile extends Component {
       <div>
         <p className="mt-4"><b>Name:</b> {this.state.user.name}</p>
         <p className="mt-4"><b>Lastname:</b> {this.state.user.lastName}</p>
-        <p className="mt-4"><b>About me:</b> {this.state.user.sobreMi}</p>
+        <p className="mt-4 aboutme"><b>About me:</b> {this.state.user.sobreMi}</p>
         
         <div className=" row d-flex align-items-center">
         

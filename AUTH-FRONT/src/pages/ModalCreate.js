@@ -18,14 +18,14 @@ class ModalCreate  extends Component{
     return (
         <div className = "">
           <div className ="text-center">
-            <img className="modalImg" src={modalCreate} alt="" srcset=""/>
+            <img className="modalImg mt-2" src={modalCreate} alt="" srcset=""/>
         </div>
-          <div className = "text-center mt-5 textModal">
+          <div className = "text-center mt-4 textModal">
           <p>Great <b>{this.state.name}</b>!</p>
           <p>You have just created </p>
           <p>an action.</p>
           </div>
-          <div className = "text-center mt-5 textModal2 mb-5">
+          <div className = "text-center mt-4 textModal2 mb-4">
             <p><i>You must be the change you want</i> </p>
             <p> <i>to see in the world</i> </p>
             <p> <i>- Gandhi</i></p>
