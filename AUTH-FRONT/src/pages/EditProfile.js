@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
+import logo from "../img/noun_profile_1669472.png"
 
 // import axios from "axios";
 class EditProfile extends Component {
@@ -43,13 +44,13 @@ class EditProfile extends Component {
         return (
       <div className="createEvent pb-5 mb-5 m-3">
         
-        <h2>Edit User</h2>
+        <h2 className ="text-center ">Edit User</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="form-group">
             
             <div className="col text-center pb-3">
             <p htmlFor="idProfileImg">Edit profile image</p>
-            <img className ="profileImg" src={this.state.imageUrl} alt=""/>
+            <img className ="profileImg" src={this.state.user.imageUrl ? this.state.user.imageUrl : logo} alt=""/>
             </div>
             
             <input

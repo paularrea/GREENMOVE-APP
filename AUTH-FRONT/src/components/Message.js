@@ -27,7 +27,7 @@ class Message extends Component {
     handleChange = (e) => {
         const { name, value } = e.target;
         console.log( this.props.members, this.state.notifications, "holaaaaaaNotifications");
-        this.setState({ [name]: value, eventId: this.props.eventId, members: this.props.members });
+        this.setState({ [name]: value, eventId: this.props.eventId, members: this.props.members, creator:this.props.creator });
       };
     render() {
      

@@ -43,6 +43,7 @@ class MyEvents extends Component {
       return (
         <div className="pt-3 m-3">
           <nav>
+          <h3 className ="text-center mb-5">Actions</h3>
             <div
               className="btn-group-active row d-flex justify-content-center "
               data-toggle="buttons"

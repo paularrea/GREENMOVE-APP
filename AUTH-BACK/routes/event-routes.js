@@ -62,18 +62,33 @@ router.post("/events/remove-member", async (req, res, next) => {
 router.put("/events/message", async (req, res, next) => {
   const message = req.body.notifications;
    const members = req.body.members;
+   const eventId = req.body.eventId
+   const creatorId = req.body.creator
+   const notificationsId = {message, eventId, creatorId}
+   
   //   console.log(message)
     // console.log(members, "holaaaa");
+    console.log(notificationsId,'el Member')
   try {
      await members.map(async (member) => {
       const oneMember = member._id
-      console.log(oneMember,'el Member')
       console.log(message)
-      await User.findByIdAndUpdate(oneMember,{$push:{notifications: message }})
+      await User.findByIdAndUpdate(oneMember,{$push:{notifications: notificationsId}})
+     
        });
-      res.status(200).json("sended to members" );
+      res.status(200).json("sended to members");
   } catch (err) {
     console.log(err);
+  }
+});
+router.get("/events/message", async (req, res, next) => {
+  try{
+    let userId = req.session.currentUser._id
+  eventInfo = await User.findById(userId).populate('notifications.eventId').populate('notifications.creatorId')
+   console.log(eventInfo)
+  res.json(eventInfo)
+  }catch(err){
+  res.json(err)
   }
 });
 

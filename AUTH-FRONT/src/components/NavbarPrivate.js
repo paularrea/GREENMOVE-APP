@@ -25,7 +25,7 @@ class NavbarPrivate extends Component {
             </Link>
             </div>
           
-            <Link className="navbar-brand text-light" to="/private/my-actions">
+            <Link className="navbar-brand text-light" to="/private/join-actions">
             <div className = "col text-center">
             <img className="logo-priv" src={activityLogo} alt="activity"/>
             <p>Activity</p>

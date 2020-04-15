@@ -20,9 +20,10 @@ class Noticeboard extends Component {
     this.getAllEvents();
   }
   render() {
+   
     return (
       <div className="noticeboard">
-        <p>Noticeboard</p>
+        <h3 className ="text-center mb-5">Noticeboard</h3>
         <div>
           {this.state.listOfEvents.map((event) => {
             return (

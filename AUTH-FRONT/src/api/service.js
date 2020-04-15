@@ -43,6 +43,12 @@ addMessage(object){
   .then(res => res.data)
   .catch(errorHandler)
 },
+getNotiInfo(){
+  return service.get("/events/message")
+  .then(res => res.data)
+  .catch(errorHandler)
+},
+
 getUserInfo(){
   //necesito enviar al back la id del evento. la id de mi usuario 
   return service.get("/profile")

@@ -5,6 +5,7 @@ import logo from "../img/noun_profile_1669472.png"
 import accions from "../img/modalCreate.png"
 import joinMod from "../img/actions.png"
 import auth from "../api/service"
+import edit from "../img/edit.png"
 class MyProfile extends Component {
   constructor(props) {
     super(props);
@@ -23,32 +24,44 @@ class MyProfile extends Component {
     return (
       <div className="container-page d-flex justify-content-center">
 
-    <div>
+         <div >
+           
+    
     <div className="text-center">
-        <h3>{this.state.username}</h3>
+      <div>
+    <Link to={`/private/edit-profile`}>
+        <button className="btnBorder "><img className="logo-priv" src={edit} alt=""/></button>
+         </Link>
+  </div> 
+      <div className="text-center">
+    <h3 className =" mb-2">Profile</h3>
+    </div>
+
+
         <img className ="profileImg mt-3 mb-2" src={this.state.user.imageUrl ? this.state.user.imageUrl : logo} alt=""/>
     </div>
     <div className="text-justify profile-text">
+      <div>
         <p className="mt-4"><b>Name:</b> {this.state.user.name}</p>
         <p className="mt-4"><b>Lastname:</b> {this.state.user.lastName}</p>
         <p className="mt-4"><b>About me:</b> {this.state.user.sobreMi}</p>
-        <div className="row d-flex align-items-center">
-        <p className="mt-4 mr-2">Created actions: {this.state.user.myAccions.length}</p>
+        
+        <div className=" row d-flex align-items-center">
+        
+        <p className="mt-4 pl-3 mr-2"><b>Created actions:</b> {this.state.user.myAccions.length}</p>
         <img className="medalProfile" src={accions} alt="" srcset=""/>
         </div>
-        <div className="row d-flex align-items-center"> 
-        <p className="mt-4 mr-2">Joined actions: {this.state.user.joinAccions.length}</p>
+        <div className="row d-flex align-items-center">
+           
+        <p className="mt-4 pl-3  mr-2"><b>Joined actions:</b> {this.state.user.joinAccions.length}</p>
         <img className="medalProfile" src={joinMod} alt="" srcset=""/>
         </div>
-        <div className="row d-flex justify-content-center text-center">
-        <Link to={`/private/edit-profile`}>
-          <div className ="col">
-        <button className="btn btn-primary btnEdit mt-4">Edit Profile</button>
         </div>
-        </Link>
+        <div className="row d-flex justify-content-center text-center">
+        
         <Link  to="/private/add-events">
           <div className ="col">
-        <button className="btn btn-warning text-light btnEdit mt-4">Add Event</button>
+        <button className="btn btn-warning text-light btnaDD mt-4">Create Action</button>
         </div>
             </Link>
               <br />

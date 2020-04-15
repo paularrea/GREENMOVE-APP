@@ -43,8 +43,9 @@ class JoinEvents extends Component {
       return (
         <div className="pt-3 m-3">
           <nav>
+            <h3 className ="text-center mb-3">Actions</h3>
             <div
-              className="btn-group-active row d-flex justify-content-center "
+              className="btn-group-active row d-flex justify-content-center mb-4"
               data-toggle="buttons"
               role="group"
               aria-label="Basic example"

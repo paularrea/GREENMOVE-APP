@@ -10,7 +10,11 @@ const userSchema = new Schema({
   imageUrl: {type: String},
   myAccions:[{ type: Schema.Types.ObjectId, ref: "Event"}],
   joinAccions:[{ type: Schema.Types.ObjectId, ref: "Event"}],
-  notifications: [String],
+  notifications: [{
+    message:{type:String},
+    eventId:{ type: Schema.Types.ObjectId, ref: "Event"},
+    creatorId:{ type: Schema.Types.ObjectId, ref: "User"}
+  }],
   CP: {type: String},
   isUser: { type: Boolean, default: false } 
 }, {

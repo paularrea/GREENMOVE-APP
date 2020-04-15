@@ -7,7 +7,7 @@ import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
 import BottonJoin from "../components/BottonJoin";
 import Message from "../components/Message";
-
+import logo from "../img/noun_profile_1669472.png"
 class EventDetails extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +46,7 @@ class EventDetails extends Component {
     }
     else {
       return service
+      
         .addMember({ eventId: params.id, userId: this.props.user._id })
         .then((res) => {
           this.props.history.push(`/private/modal/${this.state._id}`);
@@ -127,7 +128,7 @@ class EventDetails extends Component {
               return (
                 <div>
                   <div className="col text-center">
-                    <img className="memberImg" src={member.imageUrl} alt="" />
+                    <img className="memberImg" src={member.imageUrl ? member.imageUrl : logo} alt="" />
                     <h3 className="textMyEvent text-dark">{member.name}</h3>
                   </div>
                 </div>

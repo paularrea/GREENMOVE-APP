@@ -10,7 +10,7 @@ const eventSchema = new Schema({
   materials:{type: String},
   duration: {type: String},
   location: {type: String},
-  date:{ type: Date},
+  date:{ type: String},
   coordinates:[{type: Number}]
 });
 
