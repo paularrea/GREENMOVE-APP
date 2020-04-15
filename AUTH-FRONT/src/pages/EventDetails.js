@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import React, { Component } from "react";
 import axios from "axios";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
@@ -7,7 +7,7 @@ import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
 import BottonJoin from "../components/BottonJoin";
 import Message from "../components/Message";
-import logo from "../img/noun_profile_1669472.png"
+
 class EventDetails extends Component {
   constructor(props) {
     super(props);
@@ -103,11 +103,7 @@ class EventDetails extends Component {
     });
     return (
       <div className="p-3">
-        <Message userId={this.props.user._id}
-            members={this.state.members}
-            creator={this.state.creator}
-            eventId={this.state.eventId}
-            />
+        
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <BottonJoin
             type="submit"
@@ -128,14 +124,14 @@ class EventDetails extends Component {
               return (
                 <div>
                   <div className="col text-center">
-                    <img className="memberImg" src={member.imageUrl ? member.imageUrl : logo} alt="" />
+                    <img className="memberImg" src={member.imageUrl} alt="" />
                     <h3 className="textMyEvent text-dark">{member.name}</h3>
                   </div>
                 </div>
               );
             })}
           </div>
-
+          </form>
           <Map center={position} zoom={25}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -151,9 +147,13 @@ class EventDetails extends Component {
               </Marker>
             )}
           </Map>
-
-          <Link to={"/private"}>Back to Events</Link>
-        </form>
+          
+          <Message userId={this.props.user._id}
+            members={this.state.members}
+            creator={this.state.creator}
+            eventId={this.state.eventId}
+            />
+        
       </div>
     );
   }

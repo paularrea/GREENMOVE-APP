@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
-import  modalCreate  from "../img/modalCreate.png"
+import  send  from "../img/send.png"
 import { withAuth } from "../lib/AuthProvider";
-
-class ModalCreate  extends Component{
+class ModalSend  extends Component{
   constructor(props){
     super(props)
     this.state ={user:{}, members:[]}
@@ -18,28 +17,30 @@ class ModalCreate  extends Component{
     return (
         <div className = "">
           <div className ="text-center">
-            <img className="modalImg" src={modalCreate} alt="" srcset=""/>
+            <img className="modalImg" src={send} alt="" srcset=""/>
         </div>
           <div className = "text-center mt-5 textModal">
-          <p>Great <b>{this.state.name}</b>!</p>
-          <p>You have just created </p>
-          <p>an action.</p>
+          <p>Hi <b>{this.state.name}</b> !</p>
+          <p>Your message has been</p>
+          <p> sent to all the members </p>
+          <p>of this action</p>
+          
           </div>
           <div className = "text-center mt-5 textModal2 mb-5">
             <p><i>You must be the change you want</i> </p>
             <p> <i>to see in the world</i> </p>
             <p> <i>- Gandhi</i></p>
             
-          </div>
+          </div> 
           <div className="text-center pb-3">
-          <Link to="/private"><button className="btn btnOrange">Go to Explore</button></Link>
+          <Link to="/private"><button className="btn btnOrange">Back to Explore</button></Link>
           </div>
           <div className="text-center">
-          <Link to="/private/my-profile"><button className="btn btnBlue">Back to Profile</button></Link>
+          <Link to="/private/my-profile"><button className="btn btnBlue">Go to Profile</button></Link>
           </div>
         </div>
     )
   }
 }
 
-export default withAuth(ModalCreate)
+export default withAuth(ModalSend)

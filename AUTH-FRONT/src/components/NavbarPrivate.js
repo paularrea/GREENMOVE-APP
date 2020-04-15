@@ -16,7 +16,7 @@ class NavbarPrivate extends Component {
       <nav className="nav-priv navbar fixed-bottom navbar-expand-lg ">
         {
          
-          (<> <div className="d-flex justify-content-center">
+          (<> <div className="d-flex justify-content-center align-items-center">
             <Link className="navbar-brand text-light" to="/private">
             <div className = "col text-center">
               <img className="logo-priv" src={noticeLogo} alt="noticeboard"/>

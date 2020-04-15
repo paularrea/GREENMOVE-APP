@@ -42,8 +42,11 @@ class Modal  extends Component{
             <p><i>collaborating in  this action</i></p>
             
           </div> 
+          <div className="text-center pb-3">
+          <Link to="/private"><button className="btn btnOrange">Back to Explore</button></Link>
+          </div>
           <div className="text-center">
-          <Link to="/private"><button className="btn btn-primary">Back to explore</button></Link>
+          <Link to="/private/my-profile"><button className="btn btnBlue">Go to Profile</button></Link>
           </div>
         </div>
     )

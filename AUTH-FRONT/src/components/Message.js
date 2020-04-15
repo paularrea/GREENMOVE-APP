@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import service from "../api/service";
+import { Redirect } from "react-router-dom";
 
 class Message extends Component {
   constructor(props) {
@@ -9,16 +10,25 @@ class Message extends Component {
       members: [],
       creator: "",
       notifications: "",
-      eventId:"" 
+      eventId:"" ,
+      redirect: false
     };
   }
-  
+ 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/private/modal-message' />
+    }
+  }
   handleSubmit = (e) => {
       e.preventDefault();
       service
       .addMessage(this.state)
       .then((res) => {
-          console.log("Sended", res);
+        this.setState({
+          redirect: true
+        })
+        console.log("Sended", res);
         })
         .catch((err) => {
             console.log("Error while adding the thing:", err);
@@ -38,11 +48,8 @@ class Message extends Component {
       <form onSubmit ={(e)=> this.handleSubmit(e)}>
         <div className="text-center">
           <div>
-            <div className="text-right m-3 ">
-              <button className="btn btn-warning btnDetails text-light">
-                Send it!
-              </button>
-            </div>
+           
+            <label className="someAdd">Something to add?</label>
             <div className="textAreaCreator mb-3">
               <textarea
                 name="notifications"
@@ -50,6 +57,12 @@ class Message extends Component {
                 onChange={(e) => this.handleChange(e)}
                 placeholder="escribe un mensaje..."
               ></textarea>
+            </div>
+            <div className="text-center m-3 ">
+            {this.renderRedirect()}
+              <button  onClick={this.setRedirect} className="btn btnOrange">
+                Send it!
+              </button>
             </div>
           </div>
         </div>

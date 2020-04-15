@@ -14,6 +14,7 @@ import ModalCreate from "./ModalCreate";
 import ModalCorazonPartio from "./ModalCorazonPartio";
 import MyEvents from './MyEvents'
 import JoinEvents from './JoinEvents'
+import ModalSend from "./ModalSend";
 
 
 
@@ -33,6 +34,7 @@ class Private extends Component {
           <Route exact path="/private/events/:id" component={EventDetails} />
           <Route exact path="/private/modal/:id" component={Modal} />
           <Route exact path="/private/modal-create" component={ModalCreate} />
+          <Route exact path="/private/modal-message/" component={ModalSend} />
           <Route exact path="/private/modal-delete" component={ModalCorazonPartio} />
           <Route exact path="/private/my-actions" component={MyEvents} />
           <Route exact path="/private/join-actions" component={JoinEvents} />

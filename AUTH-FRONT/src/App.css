@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -16,10 +17,36 @@ top: 7px !important;
 .textAreaCreator{
   border: 1px solid gray;
   border-radius: 10px;
+  
+}
+.btnOrange{
+  background-color: rgb(250, 230, 186) !important;
+  border: 2px solid #FACF72 !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 6px 30px !important;
+}
+.btnBlue{
+  background-color: rgb(226, 250, 250) !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 6px 30px !important;
+}
+.btnBlue2{
+  background-color: rgb(226, 250, 250) !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  padding: 6px 20px !important;
 }
 .textAreaCreator textarea{
+  padding: 10px;
   width: 100%;
-  height: auto;
+  height: 90px;
 }
 .App {
   padding: 20px;;
@@ -29,18 +56,13 @@ top: 7px !important;
 }
 /* Registro */
 .logoutLogo{
+  top: 20px;
+  left: 20px;
+  position: absolute;
   width: 30px;
 }
-.btnDetails{
-  border-radius: 15px !important;
-  font-size: 25px !important;
-  padding: 6px 30px !important;
-}
-.logout{
-  margin: 15px;
 
 
-}
 .logo-priv{
   width: 35px;
 }
@@ -50,7 +72,8 @@ top: 7px !important;
 }
 
 .nav-priv{
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 5px 5px 0 0;
 }
 .navegacion{
   list-style:none;
@@ -127,11 +150,14 @@ top: 7px !important;
   position: fixed;
   bottom: 0px;
   }
+  .someAdd{
+  font-size: 20px;
+  }
 /* add Event */
 .leaflet-container {
   width: 100%;
   height: 50vh;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   border-radius: 5px;
   }
 .mapContainer {
@@ -188,7 +214,7 @@ top: 7px !important;
   font-size: 10px;
   }
   .modalImg{
-    width: 100px;
+    width: 150px;
   }
   .textModal p{
   font-size: 30px;
@@ -197,6 +223,9 @@ top: 7px !important;
   .textModal2 p{
     
     line-height: 15px;
+    }
+    .nav-priv{
+      height: 80px;
     }
   /* Profile */
   .rowProf{
@@ -227,8 +256,44 @@ top: 7px !important;
 color: gray;
 font-weight: 100;
   }
+  .btnOff{
+    background-color:white !important;
+    
+    padding: 5px 40px !important;
+    margin: 0 0 20px 0 !important;
+    font-size: 25px !important;
+  }
+  .padLog{
+    padding-top: 120px !important;
+  }
+  .btnOffLog{
+    background-color:white !important;
+    
+    padding: 5px 20px !important;
+    margin: 0 0 20px 0 !important;
+    
+    font-size: 30px !important;
+  }
+  .btnOn{
+    background-color:white !important;
+    
+    padding: 5px 40px !important;
+    
+    margin: 0 0 20px 0 !important;
+    border-bottom: 4px solid #FACF72 !important;
+    font-size: 25px !important;
+  }
+  .btnOnLog{
+    background-color:white !important;
+    
+    padding: 5px 20px !important;
+    
+    margin: 0 0 20px 0 !important;
+    border-bottom: 4px solid #FACF72 !important;
+    font-size: 30px !important;
+  }
   .colorBgNoti{
-    background-color: rgb(255, 247, 177);
+    background-color:#F9F3E1;
     border-radius: 6px;
     padding: 5px;
     margin: auto 0;
@@ -518,4 +583,5 @@ font-weight: 100;
 
 height: 30px;
 }
+
     

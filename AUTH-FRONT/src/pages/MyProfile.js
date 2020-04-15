@@ -6,6 +6,7 @@ import accions from "../img/modalCreate.png"
 import joinMod from "../img/actions.png"
 import auth from "../api/service"
 import edit from "../img/edit.png"
+import Navbar from "../components/Navbar";
 class MyProfile extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class MyProfile extends Component {
     console.log(this.state.myAccions, 'state')
     return (
       <div className="container-page d-flex justify-content-center">
-
+        <Navbar />
          <div >
            
     
@@ -61,7 +62,7 @@ class MyProfile extends Component {
         
         <Link  to="/private/add-events">
           <div className ="col">
-        <button className="btn btn-warning text-light btnaDD mt-4">Create Action</button>
+        <button className="btn  btnOrange mt-4">Create Action</button>
         </div>
             </Link>
               <br />

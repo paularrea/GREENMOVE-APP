@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import locationLogo from "../img/map-marker-alt-solid.svg";
-import membersLogo from "../img/user-friends-solid.svg";
+import locationLogo from "../img/map-marker-alt-solid.png";
+import membersLogo from "../img/user-friends-solid.png";
 
 class Noticeboard extends Component {
   constructor() {
@@ -22,8 +22,8 @@ class Noticeboard extends Component {
   render() {
    
     return (
-      <div className="noticeboard">
-        <h3 className ="text-center mb-5">Noticeboard</h3>
+      <div className="pt-3 ">
+        <h3 className ="text-center mb-5">Explore</h3>
         <div>
           {this.state.listOfEvents.map((event) => {
             return (

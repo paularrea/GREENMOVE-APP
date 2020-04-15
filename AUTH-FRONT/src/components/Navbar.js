@@ -17,46 +17,16 @@ class Navbar extends Component {
     });
   }
   render() {
-    const {  logout, isLoggedin } = this.props; //	<-- UPDATE HERE
+    const {  logout } = this.props; //	<-- UPDATE HERE
     return (
-      <nav>
+      <nav className="logout">
         <Link to={"/"} id="home-btn"></Link>
-        {isLoggedin ? (
-          <>
-            <div className="logout">
+            <div >
             <a href  onClick={logout}>
               <img className="logoutLogo" src= {logoutLogo} alt="Logout"/>
             </a>{" "}
-            </div>
-            {/* 	<-- UPDATE HERE     */}
-          </>
-        ) : (
-          <>
-          <div className="navegacion row">
-            <div className="col login ml-3">
-              <Link to="/login">
-                <button
-                  className={this.state.button ? "buttonFalse" : "buttonTrue"}
-                  onClick={this.handleClick}
-                >
-                  Log in
-                </button>
-              </Link>
-            </div>
-            <div className="col signup mr-3">
-              <Link to="/signup">
-                <button
-                  className={this.state.button ? "buttonTrue" : "buttonFalse"}
-                  onClick={this.handleClick}
-                >
-                  Sign up
-                </button>
-              </Link>
-            </div>
-            </div>
-          </>
-        )}
-      </nav>
+        </div>
+        </nav>
     );
   }
 }

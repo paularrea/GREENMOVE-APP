@@ -43,24 +43,24 @@ class MyEvents extends Component {
       return (
         <div className="pt-3 m-3">
           <nav>
-          <h3 className ="text-center mb-5">Actions</h3>
+          <h3 className ="text-center mb-3">Actions</h3>
             <div
-              className="btn-group-active row d-flex justify-content-center "
+              className="btn-group-active row d-flex justify-content-around "
               data-toggle="buttons"
               role="group"
               aria-label="Basic example"
             >
               <div className="m-2">
                 <Link to="/private/my-actions">
-                  <button type="radio" id="1" className="btn btn-dark">
-                    My Actions
+                  <button type="radio" id="1" className="btn btnOn">
+                    Created
                   </button>
                 </Link>
               </div>
               <div className="m-2">
                 <Link to="/private/join-actions">
-                  <button type="radio" id="2" className="btn btn-primary">
-                    Join Actions
+                  <button type="radio" id="2" className="btn btnOff">
+                    Joined
                   </button>
                 </Link>
               </div>

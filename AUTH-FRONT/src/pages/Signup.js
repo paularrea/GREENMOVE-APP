@@ -16,6 +16,31 @@ class Signup extends Component {
   render() {
     const { username, password, name, lastName } = this.state;
     return (
+      <div className=" m-3 padLog">
+      <nav>
+        
+      <div
+        className="btn-group-active row d-flex justify-content-center mb-3"
+        data-toggle="buttons"
+        role="group"
+        aria-label="Basic example"
+      >
+        <div className="m-2">
+          <Link to="/signup">
+            <button type="radio" id="1" className="btn btnOnLog">
+              Sign up
+            </button>
+          </Link>
+        </div>
+        <div className="m-2 ">
+          <Link to="/login">
+            <button type="radio" id="2" className="btn btnOffLog">
+              Log in
+            </button>
+          </Link>
+        </div>
+      </div>
+    </nav>
       <div className="loginsignup-form">
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
@@ -58,11 +83,16 @@ class Signup extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <input type="submit" value="Sign up" className="submit-btn" />
+          <div className="text-center pt-3">
+          <input type="submit" value="Sign up" className="btnOrange" />
+          </div>
         </form>
-        <div className="logRedirect">
-        <p>Already have account?</p>
-        <Link to={"/login"} className="btn-redirect"> Log in</Link>
+        <div className="logRedirect text-center pb-3">
+        <h5>Already have account?</h5>
+        <div className="mt-3">
+        <Link to={"/login"} className="btnBlue2 ">Log in</Link>
+        </div>
+      </div>
       </div>
       </div>
     );

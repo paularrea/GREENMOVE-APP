@@ -26,7 +26,7 @@ class BottonJoin extends Component {
       if (result > -1) {
         return (
           <div className="text-right m-3 ">
-            <button className="btn btn-dark btnDetails">Unjoin</button>
+            <button className="btn btnBlue">Not Going</button>
           </div>
         );
       } else if (this.props.userId === this.props.creator) {
@@ -36,7 +36,7 @@ class BottonJoin extends Component {
       } else {
         return (
           <div className="text-right m-3  ">
-            <button className=" btn btn-danger btnDetails">join</button>
+            <button className=" btn btnOrange">Going</button>
           </div>
         );
       }

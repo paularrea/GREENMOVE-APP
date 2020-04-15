@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import { Switch } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
-import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
@@ -15,7 +14,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <Navbar />
+          
 
           <Switch>
             <AnonRoute path="/signup" component={Signup} />

@@ -104,7 +104,7 @@ class EditProfile extends Component {
           </div>
           
           <div className="text-center">
-          <button  className="btn btn-primary text-light" type="submit">
+          <button  className="btn btnBlue" type="submit">
             Save Profile
           </button>
           </div>

@@ -45,22 +45,22 @@ class JoinEvents extends Component {
           <nav>
             <h3 className ="text-center mb-3">Actions</h3>
             <div
-              className="btn-group-active row d-flex justify-content-center mb-4"
+              className="btn-group-active row d-flex justify-content-around mb-4"
               data-toggle="buttons"
               role="group"
               aria-label="Basic example"
             >
               <div className="m-2">
                 <Link to="/private/my-actions">
-                  <button type="radio" id="1" className="btn btn-primary">
-                    My Actions
+                  <button type="radio" id="1" className="btn btnOff">
+                    Created
                   </button>
                 </Link>
               </div>
               <div className="m-2">
                 <Link to="/private/join-actions">
-                  <button type="radio" id="2" className="btn btn-dark">
-                    Join Actions
+                  <button type="radio" id="2" className="btn btnOn">
+                    Joined
                   </button>
                 </Link>
               </div>
