@@ -6,16 +6,15 @@ class BottonJoin extends Component {
     this.state = {
       userId: "",
       members: [],
-      creator:"",
-      notifications:""
+      creator: "",
+      notifications: "",
     };
   }
   handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(this.state.notifications, "holaaaaaaNotifications")
+    console.log(this.state.notifications, "holaaaaaaNotifications");
     this.setState({ [name]: value });
   };
-  
 
   render() {
     let result = this.props.members.findIndex(
@@ -23,33 +22,25 @@ class BottonJoin extends Component {
     );
     //console.log(result);
 
-    {if(result > -1){
-      return (
-        <div>
-          <button className="btn btn-dark">Unjoin</button>
-          </div>)
-
-        } else if(this.props.userId === this.props.creator){
-          return(<form>
-            <div className ="text-center">
-              <div>
-            <div className ="mb-3">
-            <button className="btn btn-warning" type="submit">Send</button>
-            </div>
-                <div className="textAreaCreator mb-3">
-            <textarea name="notifications" value={this.state.notifications} onChange={(e) => this.handleChange(e)} placeholder="escribe un mensaje..."></textarea>
-            </div>
-            </div>
-            </div>
-          </form>)
-        }
-        else{
-          return(<div><button className="btn btn-danger">join</button></div>)
-          
-          
-
-        }
-        }
+    {
+      if (result > -1) {
+        return (
+          <div className="text-right m-3 ">
+            <button className="btn btn-dark btnDetails">Unjoin</button>
+          </div>
+        );
+      } else if (this.props.userId === this.props.creator) {
+        return (
+          <div></div>
+        );
+      } else {
+        return (
+          <div className="text-right m-3  ">
+            <button className=" btn btn-danger btnDetails">join</button>
+          </div>
+        );
+      }
+    }
   }
 }
 

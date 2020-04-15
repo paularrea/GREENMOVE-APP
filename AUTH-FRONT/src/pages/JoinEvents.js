@@ -16,7 +16,7 @@ class JoinEvents extends Component {
   getProfile = () => {
     console.log(this.props.user._id);
     axios
-      .get(`http://localhost:4000/api/join-events/${this.props.user._id}`)
+      .get(process.env.REACT_APP_API_URI+`/api/join-events/${this.props.user._id}`)
       .then((responseFromApi) => {
         console.log("responseeeeeee", responseFromApi.data);
 

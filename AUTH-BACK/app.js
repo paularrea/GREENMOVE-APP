@@ -53,7 +53,7 @@ mongoose
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.PUBLIC_DOMAIN],
+    origin: ["http://localhost:3000","https://tensile-medium-273509.web.app"],
   })
 );
 

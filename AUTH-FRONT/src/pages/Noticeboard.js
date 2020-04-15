@@ -10,7 +10,7 @@ class Noticeboard extends Component {
     this.state = { listOfEvents: [] };
   }
   getAllEvents = () => {
-    axios.get(`http://localhost:4000/api/events`).then((responseFromApi) => {
+    axios.get(process.env.REACT_APP_API_URI+`/api/events`).then((responseFromApi) => {
       this.setState({
         listOfEvents: responseFromApi.data,
       });

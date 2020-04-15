@@ -6,6 +6,7 @@ import L from "leaflet";
 import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
 import BottonJoin from "../components/BottonJoin";
+import Message from "../components/Message";
 
 class EventDetails extends Component {
   constructor(props) {
@@ -14,16 +15,15 @@ class EventDetails extends Component {
       coordinates: "",
       members: [],
       creator: "",
-      notifications: "",
+      notifications: [],
+      eventId: ""
+      
     };
   }
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(this.state.notifications, "holaaaaaaNotifications");
-    this.setState({ [name]: value });
-  };
+  
   handleSubmit = (e) => {
     const { params } = this.props.match;
+    
     console.log(params.id, "id del evento");
     console.log("USEEEEEEER ID :", this.props.user._id);
     console.log("members", this.state.creator);
@@ -44,23 +44,7 @@ class EventDetails extends Component {
           console.log("Error while adding the thing:", err);
         });
     }
-
-    if (this.props.user._id === this.state.creator) {
-      console.log(this.state.notifications,"jamonYoooooork");
-      return service
-        .addMessage({
-          eventId: params.id,
-          members: this.state.members.map((member) => member._id),
-          notifications: this.state.notifications,
-        })
-        .then((res) => {
-          this.props.history.push(`/private/modal/${this.state._id}`);
-          console.log("Added", res);
-        })
-        .catch((err) => {
-          console.log("Error while adding the thing:", err);
-        });
-    } else {
+    else {
       return service
         .addMember({ eventId: params.id, userId: this.props.user._id })
         .then((res) => {
@@ -77,7 +61,7 @@ class EventDetails extends Component {
     const { params } = this.props.match;
     // console.log(params.id, "paramsEvent")
     axios
-      .get(`http://localhost:4000/api/events/${params.id}`)
+      .get(process.env.REACT_APP_API_URI + `/api/events/${params.id}`)
       .then((responseFromApi) => {
         const event = responseFromApi.data;
         this.setState(event);
@@ -88,12 +72,13 @@ class EventDetails extends Component {
   };
   getMembers = () => {
     const { params } = this.props.match;
+    const eventId = params.id
     // console.log(params.id, "paramsEvent")
     axios
-      .get(`http://localhost:4000/api/events/${params.id}`)
+      .get(process.env.REACT_APP_API_URI + `/api/events/${params.id}`)
       .then((responseFromApi) => {
         const members = responseFromApi.data.members;
-        this.setState({ members: members });
+        this.setState({ members: members, eventId: eventId });
       })
       .catch((err) => {
         console.log(err);
@@ -103,6 +88,7 @@ class EventDetails extends Component {
   componentDidMount() {
     this.getEvent();
     this.getMembers();
+
   }
 
   render() {
@@ -116,15 +102,18 @@ class EventDetails extends Component {
     });
     return (
       <div className="p-3">
+        <Message userId={this.props.user._id}
+            members={this.state.members}
+            creator={this.state.creator}
+            eventId={this.state.eventId}
+            />
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <BottonJoin
             type="submit"
             userId={this.props.user._id}
             members={this.state.members}
             creator={this.state.creator}
-            ref={(element) => {
-              this.child = element;
-            }}
+
           />
 
           <img className="imgEvent" src={this.state.imageUrl} alt="" />

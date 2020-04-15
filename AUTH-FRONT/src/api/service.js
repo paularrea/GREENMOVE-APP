@@ -1,6 +1,6 @@
 import axios from "axios";
 const service = axios.create({
-  baseURL: "http://localhost:4000/api",
+  baseURL: process.env.REACT_APP_API_URI +"/api",
     withCredentials: true
 });
 const errorHandler = (err) => {
@@ -39,7 +39,7 @@ deleteMember(object){
 },
 addMessage(object){
   //necesito enviar al back la id del evento. la id de mi usuario 
-  return service.post("/events/members-message", object)
+  return service.put("/events/message", object)
   .then(res => res.data)
   .catch(errorHandler)
 },

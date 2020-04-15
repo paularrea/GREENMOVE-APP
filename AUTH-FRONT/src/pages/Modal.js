@@ -13,7 +13,7 @@ class Modal  extends Component{
     const { params } = this.props.match;
      console.log(params.id, "paramsEvent")
     axios
-      .get(`http://localhost:4000/api/events/${params.id}`)
+      .get(process.env.REACT_APP_API_URI+`/api/events/${params.id}`)
       .then((responseFromApi) => {
         const event = responseFromApi.data;
         this.setState(event);
@@ -38,7 +38,7 @@ class Modal  extends Component{
           <p><b>{this.state.title}</b></p>
           </div>
           <div className = "text-center mt-5 textModal2 mb-5">
-            <p><i>You and <b>{this.state.members.length}</b> more people are</i> </p>
+            <p><i>You and <b>{this.state.members.length -1}</b> more people are</i> </p>
             <p><i>collaborating in  this action</i></p>
             
           </div> 
