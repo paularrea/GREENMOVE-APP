@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
+import service from "../api/service";
 
 class JoinEvents extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class JoinEvents extends Component {
       redirect: false,
       joinAccions: [],
       user: {},
+      notiInfo: [],
+      creator: "",
     };
   }
   getProfile = () => {
@@ -26,9 +29,12 @@ class JoinEvents extends Component {
       });
   };
 
+
+
   componentDidMount() {
     this.setState({ user: this.props.user });
     this.getProfile();
+
   }
 
   render() {
@@ -75,6 +81,7 @@ class JoinEvents extends Component {
                 <div className="imgMyEvent d-flex justify-content-center align-items-center" style={{backgroundImage:`url(${event.imageUrl})`}}>
                 </div>
                   <div class="ZZtop text-center">
+                    {/* <img src={this.state.} alt=""/> */}
                   <div className="textMyEvent"><b>{event.title}</b></div>
                   <div className=""><i>{event.location}</i></div>
                   </div>

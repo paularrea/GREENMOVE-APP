@@ -17,6 +17,7 @@ router.get("/join-events/:id", async (req, res, next) => {
   const userId = req.params.id
   
   joinAccions = await User.findById(userId).populate("joinAccions");
+  
   // console.log(myAccions)
   res.json(joinAccions)
   }catch(err){

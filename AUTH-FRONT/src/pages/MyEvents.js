@@ -32,6 +32,7 @@ class MyEvents extends Component {
   }
 
   render() {
+    console.log(this.state, "creador?????????")
     const isLoading = this.state.MyActions === 0 ? true : false;
     const { redirect } = this.state;
 
