@@ -148,7 +148,7 @@ class EventDetails extends Component {
                     <div>
                     <div className="col text-center">
                       <img className="memberImg" src={member.imageUrl} alt="" />
-                      <h3 className="textMyEvent text-dark">{member.name}</h3>
+                      <h3 className="text-memb text-dark">{member.name}</h3>
                     </div>
                   </div>
                   );
@@ -158,12 +158,12 @@ class EventDetails extends Component {
                     <div>
                     <div className="col text-center">
                       <img className="memberImg" src={member.imageUrl} alt="" />
-                      <h3 className="textMyEvent text-dark">{member.name}</h3>
+                      <p className="text-memb text-dark">{member.name}</p>
                     </div>
                   </div>
                   );
                 })}
-            { this.state.members.length > 3 ? <span><i>... {this.state.members.length -3} going</i></span> : <div></div>}
+            { this.state.members.length > 3 ? <span className="mt-2"><i>... {this.state.members.length -3} more going</i></span> : <div></div>}
             
           </div>
           {/* <div className="row pt-3">
@@ -200,7 +200,7 @@ class EventDetails extends Component {
 
           <h5 className="mt-4 mb-3">Location:</h5>
         </form>
-        <Map center={position} zoom={25}>
+        <Map center={position} zoom={12}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

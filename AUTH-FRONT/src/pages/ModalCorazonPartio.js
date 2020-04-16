@@ -22,12 +22,12 @@ class ModalCreate  extends Component{
         </div>
           <div className = "text-center mt-5 textModal">
           <p>Oooh <b>{this.state.name}...</b></p>
-          <p>We are sorry that you</p>
-          <p>can't come to the action.</p>
+          <p>We are sorry to hear </p>
+          <p>that you're not coming</p>
           </div>
           <div className = "text-center mt-5 textModal2 mb-5">
             <p><i>Hopefully you can join</i> </p>
-            <p> <i>the next one</i> </p>
+            <p> <i>us in the next one</i> </p>
          
             
           </div>

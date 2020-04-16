@@ -19,6 +19,7 @@ top: 7px !important;
   border-radius: 10px;
   
 }
+
 .btnOrangeLog{
   background-color: rgba(250, 230, 186,.7) !important;
   border: 2px solid #FACF72 !important;
@@ -127,8 +128,14 @@ top: 7px !important;
 }
 .textAreaCreator textarea{
   padding: 10px;
-  width: 100%;
+  width: 95%;
   height: 90px;
+}
+
+.text-memb{
+  font-weight: lighter !important;
+  font-size: 12px;
+  margin-top: 3px;
 }
 .App {
   padding: 20px;;
@@ -138,7 +145,7 @@ top: 7px !important;
 }
 /* Registro */
 .logoutLogo{
-  top: 20px;
+  top: 32px;
   left: 20px;
   position: absolute;
   width: 30px;
@@ -163,6 +170,7 @@ top: 7px !important;
 }
 .logo-edit{
   width: 25px;
+  padding-top: 25px;
  
 }
 .nav-priv p{

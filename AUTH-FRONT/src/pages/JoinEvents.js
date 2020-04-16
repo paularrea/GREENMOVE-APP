@@ -34,7 +34,6 @@ class JoinEvents extends Component {
   componentDidMount() {
     this.setState({ user: this.props.user });
     this.getProfile();
-
   }
 
   render() {

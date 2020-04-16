@@ -34,7 +34,7 @@ class Modal  extends Component{
         </div>
           <div className = "text-center mt-5 textModal">
           <p>Congratulations <b>{this.state.name}</b> !</p>
-          <p>You are going to attend to:</p>
+          <p>You are going to attend:</p>
           <p><b>{this.state.title}</b></p>
           </div>
           <div className = "text-center mt-5 textModal2 mb-5">
