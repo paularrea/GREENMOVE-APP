@@ -125,6 +125,9 @@ class EventDetails extends Component {
       <div className="p-3">
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <img className="imgEvent" src={this.state.imageUrl} alt="" />
+         
+      
+          <h1 className="titleDetails">{this.state.title}</h1>
           <p className="fechayhora">
             <i>
               {this.state.date} - {this.state.duration}h
@@ -138,8 +141,7 @@ class EventDetails extends Component {
               creator={this.state.creator._id}
             />
           </div>
-          <h1 className="titleDetails">{this.state.title}</h1>
-          <div className="row pt-3 fotosMembers">
+          <div className="row pt-1 fotosMembers">
             {this.state.members.length > 3
               ? this.state.members.slice(0, 3).map((member) => {
                   return (
@@ -176,7 +178,7 @@ class EventDetails extends Component {
               );
             })}
           </div> */}
-          <h5 className="mt-4">The Organizer:</h5>
+          <h5 className="mt-2">The Organizer:</h5>
           <div className="d-flex align-items-center m-2">
             <div>
               <img

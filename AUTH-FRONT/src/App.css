@@ -19,6 +19,16 @@ top: 7px !important;
   border-radius: 10px;
   
 }
+.btnOrangeLog{
+  background-color: rgba(250, 230, 186,.7) !important;
+  border: 2px solid #FACF72 !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 6px 30px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
+
 .btnOrange{
   background-color: rgb(250, 230, 186) !important;
   border: 2px solid #FACF72 !important;
@@ -26,6 +36,58 @@ top: 7px !important;
   border-radius: 10px !important;
   font-size: 20px !important;
   padding: 6px 30px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
+.btnOrangeBig{
+  background-color: rgb(250, 230, 186) !important;
+  border: 2px solid #FACF72 !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 10px 150px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
+.btnOrangeProf{
+  background-color: rgb(250, 230, 186) !important;
+  border: 2px solid #FACF72 !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 10px 80px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
+
+.btnBlueProfile{
+  background-color: rgb(226, 250, 250) !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  width: 300px;
+  margin:0 !important;
+  padding: 0 !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+  /* padding: 6px 30px !important; */
+}
+.textprof{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.btnBlueProfile p{
+  margin: 0
+}
+.btnBlueProfile div{
+  padding: 0
+}
+.btnBlueLog{
+  background-color: rgba(226, 250, 250, .7) !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 6px 30px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+
 }
 .btnBlue{
   background-color: rgb(226, 250, 250) !important;
@@ -34,6 +96,17 @@ top: 7px !important;
   border-radius: 10px !important;
   font-size: 20px !important;
   padding: 6px 30px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+
+}
+.btnBlueBig{
+  background-color: rgb(226, 250, 250) !important;
+  border: 2px solid #A5E9EA !important;
+  color: rgb(54, 53, 53) !important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+  padding: 10px 125px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 }
 .btnBlue :hover{
   background-color: #A5E9EA !important;
@@ -44,12 +117,13 @@ top: 7px !important;
   padding: 6px 30px !important;
 }
 .btnBlue2{
-  background-color: rgb(226, 250, 250) !important;
+  background-color: rgba(226, 250, 250, .7) !important;
   border: 2px solid #A5E9EA !important;
   color: rgb(54, 53, 53) !important;
   border-radius: 10px !important;
   font-size: 14px !important;
   padding: 6px 20px !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 }
 .textAreaCreator textarea{
   padding: 10px;
@@ -220,22 +294,53 @@ top: 7px !important;
 /* noticeboard */
 .logo-notice{
   width: 20px;
+ 
 }
 .imgEvent{
   object-fit: cover;
   width: 100%;
   height: 250px;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.2) !important;
+  border-radius: 5px;
 }
 .text-noticeboard{
-  margin: 20px;
+  margin: 50px 20px 8px 20px;
 }
+.textoProfile p{
+  font-size: 16px !important;
+}
+.textoProfile{
+  /* width: 200px !important; */
+}
+.texto-explore{
+  width: 350px;
+  margin: 0 !important;
+  margin-top: 5px !important;
+}
+
 /* Actions */
 .imgMyEvent{
+background-color: rgba(0, 0, 0, 1);
+opacity: 0.6;
+  position:relative;
+  z-index: 5;
   object-fit: cover;
+  background-size: cover;
   width: 100%;
   height: 150px;
   border-radius: 5px;
+
   }
+
+.ZZtop{
+  position: absolute;
+  /* background-color: rgba(255, 255, 255, 0.4); */
+   z-index: 99;
+   border-radius: 5px;
+    color: black;
+    top:20px;
+   }
+   
 .eventGroup div{
   padding: 10px;
   }
@@ -246,7 +351,6 @@ top: 7px !important;
 .fotosMembers span{
   margin-left: 20px;
   font-size: 12px;
-  margin-top:10px;
   color: #909090;
   
 }
@@ -260,7 +364,10 @@ top: 7px !important;
     padding: 10px;
     }
 .textMyEvent{
-  font-size: 10px;
+  font-size: 15px;
+  }
+  .posRel{
+    position: relative;
   }
   .modalImg{
     width: 150px;
@@ -292,6 +399,7 @@ top: 7px !important;
   width: 130px;
   height: 130px;
   object-fit: cover;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.3) !important;
   border-radius: 50%;
   }
   .profileImgNoti{
@@ -299,14 +407,14 @@ top: 7px !important;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
   }
   .colorTitleNoti{
 color: gray;
 font-weight: 100;
   }
   .btnOff{
-    background-color:white !important;
+background-color: rgba(255, 255, 255, 0) !important;
     
     padding: 5px 40px !important;
     margin: 0 0 20px 0 !important;
@@ -316,7 +424,7 @@ font-weight: 100;
     padding-top: 120px !important;
   }
   .btnOffLog{
-    background-color:white !important;
+background-color: rgba(255, 255, 255, 0) !important;
     
     padding: 5px 20px !important;
     margin: 0 0 20px 0 !important;
@@ -324,7 +432,7 @@ font-weight: 100;
     font-size: 30px !important;
   }
   .btnOn{
-    background-color:white !important;
+    background-color: rgba(255, 255, 255, 0) !important;
     
     padding: 5px 40px !important;
     
@@ -333,7 +441,7 @@ font-weight: 100;
     font-size: 25px !important;
   }
   .btnOnLog{
-    background-color:white !important;
+    background-color: rgba(255, 255, 255, 0) !important;
     
     padding: 5px 20px !important;
     
@@ -346,19 +454,20 @@ font-weight: 100;
     border-radius: 6px;
     padding: 5px;
     margin: auto 0;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,.3) !important;
   }
   .memberImg{
     width: 35px;
     height: 35px;
     object-fit: cover;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 2px rgba(0,0,0,.2) !important;
     border-radius: 50%;
   }
   .creatorImg{
     width: 45px;
     height: 45px;
     object-fit: cover;
-    box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 2px rgba(0,0,0,.2) !important;
     border-radius: 50%;
   }
   .profile-text p {
@@ -383,6 +492,7 @@ font-weight: 100;
     color:grey;
     margin: 10px; 
     font-weight: 200;
+    margin-top: -10px;
   }
 
   
@@ -649,4 +759,19 @@ font-weight: 100;
 height: 30px;
 }
 
-    
+.fondoApp{
+  height: 1000px;
+    background-image: url("../src/img/fondo-greenmove.jpg");
+    background-size: cover;
+    width: 100%;
+    position: fixed;
+  }
+  .formLog{
+    border:2px solid #A5E9EA !important;
+  background-color: rgba(218, 247, 252, 0.5) !important;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.2) !important;
+}
+
+.formadd{
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}

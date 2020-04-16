@@ -7,7 +7,7 @@ class Signup extends Component {
     event.preventDefault();
     const { username, password, name, lastName } = this.state;
     //  console.log('Signup -> form submit', { username, password });
-    this.props.signup({ username, password, name, lastName }); //	<-- UPDATE HERE
+    this.props.signup({ username, password, name, lastName }); // <-- UPDATE HERE
   };
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -16,6 +16,7 @@ class Signup extends Component {
   render() {
     const { username, password, name, lastName } = this.state;
     return (
+      <div className="fondoApp">
       <div className=" m-3 padLog">
       <nav>
         
@@ -45,9 +46,10 @@ class Signup extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
             <input
+            required
               type="text"
               name="name"
-              className="form-control"
+              className="form-control formLog"
               placeholder="Name"
               value={name}
               onChange={this.handleChange}
@@ -55,9 +57,10 @@ class Signup extends Component {
           </div>
           <div className="form-group">
             <input
+            required
               type="text"
               name="lastName"
-              className="form-control"
+              className="form-control formLog"
               placeholder="Lastname"
               value={lastName}
               onChange={this.handleChange}
@@ -65,9 +68,10 @@ class Signup extends Component {
           </div>
           <div className="form-group">
             <input
+            required
               type="text"
               name="username"
-              className="form-control"
+              className="form-control formLog"
               placeholder="Username"
               value={username}
               onChange={this.handleChange}
@@ -75,16 +79,17 @@ class Signup extends Component {
           </div>
           <div className="form-group">
             <input
+            required
               type="password"
               name="password"
               placeholder="Password"
-              className="form-control"
+              className="form-control formLog"
               value={password}
               onChange={this.handleChange}
             />
           </div>
           <div className="text-center pt-3">
-          <input type="submit" value="Sign up" className="btnOrange" />
+          <input type="submit" value="Sign up" className="btnOrangeLog" />
           </div>
         </form>
         <div className="logRedirect text-center pb-3">
@@ -92,6 +97,7 @@ class Signup extends Component {
         <div className="mt-3">
         <Link to={"/login"} className="btnBlue2 ">Log in</Link>
         </div>
+      </div>
       </div>
       </div>
       </div>

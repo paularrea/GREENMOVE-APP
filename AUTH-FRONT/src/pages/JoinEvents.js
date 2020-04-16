@@ -71,9 +71,14 @@ class JoinEvents extends Component {
             return (
               <div className = "col-6">
                 <Link to={`/private/events/${event._id}`}>
-                  <img className="imgMyEvent" src={event.imageUrl} alt="" />
-                  <h3 className="textMyEvent text-dark">{event.title}</h3>
-                  <p className="text-dark">{event.location}</p>
+                  <div className="posRel">
+                <div className="imgMyEvent d-flex justify-content-center align-items-center" style={{backgroundImage:`url(${event.imageUrl})`}}>
+                </div>
+                  <div class="ZZtop text-center">
+                  <div className="textMyEvent"><b>{event.title}</b></div>
+                  <div className=""><i>{event.location}</i></div>
+                  </div>
+                  </div>
                 </Link>
               </div>
             );

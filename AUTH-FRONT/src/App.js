@@ -9,6 +9,7 @@ import AuthProvider from "./lib/AuthProvider";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 
+
 class App extends Component {
   render() {
     return (
@@ -17,6 +18,7 @@ class App extends Component {
           
 
           <Switch>
+          <AnonRoute exact path="/" component={Signup} />
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />

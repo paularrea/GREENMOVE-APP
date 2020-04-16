@@ -55,6 +55,7 @@ class EditProfile extends Component {
             
             <input
               type="file"
+              required
               className="form-control"
               id="idProfileImg"
                 name= "imageUrl"
@@ -66,6 +67,7 @@ class EditProfile extends Component {
           <div className="form-group">
             <label htmlFor="idName">Name</label>
             <input
+            required
               className="form-control"
               id="idName"
               aria-describedby="Name"
@@ -79,6 +81,7 @@ class EditProfile extends Component {
           <div className="form-group">
             <label htmlFor="idName">Lastname</label>
             <input
+            required
               className="form-control"
               id="idLastName"
               aria-describedby="Lastname"
@@ -92,6 +95,7 @@ class EditProfile extends Component {
           <div className="form-group">
             <label htmlFor="idSobreMi">Sobre Mi</label>
             <textarea
+            required
               className="form-control"
               id="idSobremi"
               aria-describedby="Sobremi"

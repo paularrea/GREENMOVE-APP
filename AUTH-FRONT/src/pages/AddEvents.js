@@ -73,8 +73,9 @@ class AddEvents extends Component {
             />
               <label className="pt-3" htmlFor="idImage">Add Event Image</label>
               <input
+              required
                 type="file"
-                className="form-control "
+                className="form-control formadd"
                 id="idImage"
                 aria-describedby="image"
                 placeholder="Event Image"
@@ -84,7 +85,8 @@ class AddEvents extends Component {
             <div className="form-group">
               <label htmlFor="idName">Title</label>
               <input
-                className="form-control"
+              required
+                className="form-control formadd"
                 id="idName"
                 aria-describedby="Name"
                 placeholder="Event Name"
@@ -97,7 +99,8 @@ class AddEvents extends Component {
             <div className="form-group">
               <label htmlFor="idDescriptionProblem">Problem</label>
               <textarea
-                className="form-control"
+              required
+                className="form-control formadd"
                 id="idDescriptionProblem"
                 aria-describedby="Description"
                 placeholder="What is the problem?"
@@ -110,7 +113,8 @@ class AddEvents extends Component {
             <div className="form-group">
               <label htmlFor="idDescriptionSolution">Solution</label>
               <textarea
-                className="form-control"
+              required
+                className="form-control formadd"
                 id="idDescriptionSolution"
                 aria-describedby="DescriptionSol"
                 placeholder="What is your solution?"
@@ -122,7 +126,8 @@ class AddEvents extends Component {
             </div>
             <label htmlFor="idDate">Date</label>
             <input
-              className="form-control"
+            required
+              className="form-control formadd"
               type="date"
               name="date"
               id="idDate"
@@ -132,7 +137,8 @@ class AddEvents extends Component {
             <br />
             <label htmlFor="idTime">Time</label>
             <input
-              className="form-control"
+            required
+              className="form-control formadd"
               type="time"
               name="duration"
               id="idTime"
@@ -141,7 +147,8 @@ class AddEvents extends Component {
             />
             <label htmlFor="idLocation">Location</label>
             <input
-              className="form-control "
+            required
+              className="form-control formadd"
               type="text"
               name="location"
               id="idLocation"
@@ -151,7 +158,7 @@ class AddEvents extends Component {
            
             <div className="text-center pt-5">
               <button
-                className="text-center btn btnBlue"
+                className="text-center btn btnBlue formadd"
                 type="submit"
               >
                 Create Event

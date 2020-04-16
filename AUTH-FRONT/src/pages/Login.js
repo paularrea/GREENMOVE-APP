@@ -16,6 +16,7 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
+      <div className="fondoApp">
       <div className=" m-3 padLog">
       <nav>
         
@@ -43,8 +44,9 @@ class Login extends Component {
         <form onSubmit={this.handleFormSubmit}>
         <div className="form-group">
           <input
+          required
             type='text'
-            className="form-control"
+            className="form-control formLog"
             name='username'
             placeholder="Username"
             value={username}
@@ -53,17 +55,19 @@ class Login extends Component {
           </div>
           <div className="form-group">
           <input
+          required
             type='password'
             name='password'
             placeholder="Password"
-            className="form-control"
+            className="form-control formLog"
             value={password}
             onChange={this.handleChange}
           /></div>
           <div className="text-center pt-3">
-          <input type='submit' value='Log in' className="btnBlue" />
+          <input type='submit' value='Log in' className="btnBlueLog" />
           </div>
         </form>
+      </div>
       </div>
       </div>
     );

@@ -27,12 +27,13 @@ class Noticeboard extends Component {
         <div>
           {this.state.listOfEvents.map((event) => {
             return (
-              <div key={event._id}>
+              <div key={event._id} className="">
                 <Link to={`/private/events/${event._id}`}>
-                  <img className="imgEvent" src={event.imageUrl} alt="" />
+              
                   <div className="text-noticeboard">
-                    <h4 className="text-dark">{event.title}</h4>
-                    <div className="row justify-content-between">
+                    <h4 className="text-dark ml-2">{event.title}</h4>
+                    <img className="imgEvent" src={event.imageUrl} alt="" />
+                    <div className="row justify-content-between texto-explore">
                     <div className=" d-flex align-items-center ml-3">
                       <img className="logo-notice" src={locationLogo} alt="" />
                       <p className="text-dark m-0 ml-2">{event.location}</p>
@@ -43,6 +44,7 @@ class Noticeboard extends Component {
                     </div>
                     </div>
                   </div>
+                 
                 </Link>
                 {/* <p style={{maxWidth: '400px'}} >{event.description} </p> */}
               </div>
