@@ -28,12 +28,23 @@ router.get("/profile", async (req, res, next) => {
   try{
     const userId = req.session.currentUser._id
     const userInfo =  await User.findById(userId)
+   
    console.log(userInfo)
        res.json(userInfo);
   }catch(err){
     console.log(err)
   }
 });
+router.get("/allprofiles", (req, res, next) => {
+  User.find()
+    .then((allTheUsers) => {
+      res.json(allTheUsers);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 router.get('/profile/:id', (req, res, next)=>{
     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
       res.status(400).json({ message: 'Specified id is not valid' });

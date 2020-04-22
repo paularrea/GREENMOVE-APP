@@ -1,9 +1,8 @@
 @media screen 
   and (min-width: 500px)
-   
-  and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 1) { 
-.contenedorDesktop{
+
+    .contenedorDesktop{
 width: 414px;
 border: 2px solid gray;
 border-radius: 10px;
@@ -12,6 +11,7 @@ overflow-y: scroll;
 margin: 0 auto;
 box-shadow: 0 0 10px 2px rgba(0,0,0,.3);
 position: relative;
+margin-top: 50px;
 }
 .logoutLogo{
 position: absolute;
@@ -23,7 +23,11 @@ position: absolute;
   width: 410px;
   margin: 0 auto;
   border-radius: 15px;
+  top: 704px !important;
   
+}
+.fondoApp{
+  position: absolute;
 }
 
 }
@@ -32,6 +36,8 @@ position: absolute;
   margin: 0;
   padding: 0;
 }
+
+
 .mapboxgl-ctrl-geocoder{
   border-radius: 5px !important;
   
@@ -87,11 +93,11 @@ top: 7px !important;
   box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 }
 .searchBar{
-  border: 2px solid gray;
+  border: 1px solid gray;
   width: 90%;
-  padding: 5px;
+  padding: 7px;
   border-radius: 10px;
-  box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 }
 
 .btnBlueProfile{
@@ -810,11 +816,11 @@ height: 30px;
 }
 
 .fondoApp{
-  height: 1000px;
+  height: 100%;
     background-image: url("../src/img/fondo-greenmove.jpg");
     background-size: cover;
     width: 100%;
-    position: fixed;
+    
   }
   .formLog{
     border:2px solid #A5E9EA !important;

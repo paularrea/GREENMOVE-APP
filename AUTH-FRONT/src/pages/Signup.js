@@ -16,7 +16,7 @@ class Signup extends Component {
   render() {
     const { username, password, name, lastName } = this.state;
     return (
-      <div className="fondoApp">
+      <div className="fondoApp position-absolute">
       <div className=" m-3 padLog">
       <nav>
         
