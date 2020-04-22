@@ -77,7 +77,7 @@ class MyEvents extends Component {
                 </div>
                   <div class="ZZtop text-center">
                   <div className="textMyEvent"><b>{event.title}</b></div>
-                  <div className=""><i>{event.location}</i></div>
+                  <p className=""><i>{event.location}</i></p>
                   </div>
                   </div>
                 </Link>

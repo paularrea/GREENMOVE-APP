@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import logo from "../img/noun_profile_1669472.png";
-import accions from "../img/modalCreate.png";
-import joinMod from "../img/actions.png";
 import auth from "../api/service";
 import edit from "../img/edit.png";
 import Navbar from "../components/Navbar";
@@ -46,7 +44,8 @@ class MyProfile extends Component {
               alt=""
             />
           </div>
-          <div className="row d-flex align-items-center justify-content-center btnBlueProfile m-4">
+          <div className="d-flex justify-content-center pt-3">
+          <div className="row d-flex align-items-center justify-content-center btnBlueProfile">
             <div className="col text-center textprof">
               {/* <img className="medalProfile" src={accions} alt="" srcset=""/> */}
               <p>
@@ -61,6 +60,7 @@ class MyProfile extends Component {
               <p className=""><i>Joined</i></p>
               {/* <img className="medalProfile" src={joinMod} alt="" srcset=""/> */}
             </div>
+          </div>
           </div>
           <div className="text-justify profile-text justify-content-center">
             

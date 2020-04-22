@@ -1,3 +1,32 @@
+@media screen 
+  and (min-width: 500px)
+   
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+.contenedorDesktop{
+width: 414px;
+border: 2px solid gray;
+border-radius: 10px;
+height: 736px;
+overflow-y: scroll;
+margin: 0 auto;
+box-shadow: 0 0 10px 2px rgba(0,0,0,.3);
+position: relative;
+}
+.logoutLogo{
+position: absolute;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.nav-priv{
+  width: 410px;
+  margin: 0 auto;
+  border-radius: 15px;
+  
+}
+
+}
 
 * {
   margin: 0;
@@ -57,6 +86,13 @@ top: 7px !important;
   padding: 10px 80px !important;
   box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 }
+.searchBar{
+  border: 2px solid gray;
+  width: 90%;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
+}
 
 .btnBlueProfile{
   background-color: rgb(226, 250, 250) !important;
@@ -65,11 +101,10 @@ top: 7px !important;
   border-radius: 10px !important;
   font-size: 15px !important;
   width: 300px;
-  margin:0 !important;
-  padding: 0 !important;
   box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
-  /* padding: 6px 30px !important; */
+ 
 }
+
 .textprof{
   padding: 0 !important;
   margin: 0 !important;
@@ -130,8 +165,11 @@ top: 7px !important;
   padding: 10px;
   width: 95%;
   height: 90px;
+  border-color: white;
 }
-
+.textAreaCreator{
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
 .text-memb{
   font-weight: lighter !important;
   font-size: 12px;
@@ -161,6 +199,7 @@ top: 7px !important;
 
 .aboutme{
   line-height: 30px !important;
+  max-width: 220px;
 }
 .navbar-brand .col{
   padding: 0;
@@ -171,7 +210,6 @@ top: 7px !important;
 .logo-edit{
   width: 25px;
   padding-top: 25px;
- 
 }
 .nav-priv p{
   font-size: 15px;
@@ -181,6 +219,8 @@ top: 7px !important;
 .nav-priv{
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 5px 5px 0 0;
+  border-radius: 15px;
+  bottom: 5px !important;
 }
 .navegacion{
   list-style:none;
@@ -364,7 +404,7 @@ opacity: 0.6;
   
 }
 .messageNoti{
-  max-width: 300px;
+  width: 240px;
 }
 .fotosMembers {
   padding-left: 15px;
@@ -464,6 +504,7 @@ background-color: rgba(255, 255, 255, 0) !important;
     padding: 5px;
     margin: auto 0;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.3) !important;
+    width: 260px;
   }
   .memberImg{
     width: 35px;

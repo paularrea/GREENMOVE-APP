@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import locationLogo from "../img/map-marker-alt-solid.png";
 import membersLogo from "../img/user-friends-solid.png";
 
+
 class Noticeboard extends Component {
   constructor() {
     super();
-    this.state = { listOfEvents: [] };
+    this.state = { listOfEvents: [], searchQuery:"" };
   }
+  
   getAllEvents = () => {
     axios.get(process.env.REACT_APP_API_URI+`/api/events`).then((responseFromApi) => {
       this.setState({
@@ -16,16 +18,45 @@ class Noticeboard extends Component {
       });
     });
   };
+   searchHandler = query => {
+    this.setState({
+      searchQuery:query.target.value
+    })
+  }
   componentDidMount() {
     this.getAllEvents();
   }
   render() {
+    let listOfEvents;  
+    if (this.state.searchQuery) {
+      console.log(this.state.searchQuery)
+      listOfEvents = this.state.listOfEvents.filter(event =>
+        event.title
+        .toLowerCase()
+        .includes(this.state.searchQuery.toLowerCase()) ||
+        event.location
+        .toLowerCase()
+        .includes(this.state.searchQuery.toLowerCase())
+        );
+      }
+       else {
+        listOfEvents = this.state.listOfEvents;
+      }
+      console.log(listOfEvents)
    
     return (
       <div className="pt-4 ">
         <h3 className ="text-center mb-4">Explore</h3>
+        <div className ="d-flex justify-content-center ">
+        <input className="searchBar"
+              placeholder="Search..."
+              type="text"
+              name="search"
+              onChange={e => this.searchHandler(e)}
+            />
+            </div>
         <div>
-          {this.state.listOfEvents.map((event) => {
+          {listOfEvents.map((event) => {
             return (
               <div key={event._id} className="">
                 <Link to={`/private/events/${event._id}`}>

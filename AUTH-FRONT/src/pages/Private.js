@@ -22,6 +22,7 @@ class Private extends Component {
 
   render() {
     return (
+      <div className ="contenedorDesktop">
       <div className="private">
         
         {/* <h1 >Welcome {this.props.user.username}</h1>*/}
@@ -41,6 +42,7 @@ class Private extends Component {
          
         </Switch>
         <NavbarPrivate/>
+      </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
-import service from "../api/service";
+
 
 class JoinEvents extends Component {
   constructor(props) {

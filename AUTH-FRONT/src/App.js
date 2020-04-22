@@ -14,6 +14,7 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
+        
         <div className="container">
           
 
@@ -24,6 +25,7 @@ class App extends Component {
             <PrivateRoute path="/private" component={Private} />
           </Switch>
         </div>
+        
       </AuthProvider>
     );
   }
