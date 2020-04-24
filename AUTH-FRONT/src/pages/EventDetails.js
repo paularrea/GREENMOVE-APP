@@ -6,6 +6,7 @@ import service from "../api/service";
 import { withAuth } from "../lib/AuthProvider";
 import BottonJoin from "../components/BottonJoin";
 import Message from "../components/Message";
+import { Link } from "react-router-dom";
 
 class EventDetails extends Component {
   constructor(props) {
@@ -70,20 +71,8 @@ class EventDetails extends Component {
         console.log(err);
       });
   };
-  // getMembers = () => {
-  //   const { params } = this.props.match;
-  //   const eventId = params.id
-  //   // console.log(params.id, "paramsEvent")
-  //   axios
-  //     .get(process.env.REACT_APP_API_URI + `/api/events/${params.id}`)
-  //     .then((responseFromApi) => {
-  //       const members = responseFromApi.data.members;
-  //       this.setState({ members: members, eventId: eventId });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+
+
 
   getMembers = () => {
     const { params } = this.props.match;
@@ -123,17 +112,32 @@ class EventDetails extends Component {
     });
     return (
       <div className="p-3">
-        <form onSubmit={(e) => this.handleSubmit(e)}>
+        
+        
           <img className="imgEvent" src={this.state.imageUrl} alt="" />
-         
-      
+
           <h1 className="titleDetails">{this.state.title}</h1>
           <p className="fechayhora">
             <i>
               {this.state.date} - {this.state.duration}h
             </i>
           </p>
+          <Link to = {`/private/modal-cancel/${this.state.eventId}`}>
+          {this.state.creator._id === this.props.user._id ? 
+            
+            <div className=" text-center pt-2 pb-3">
+              <button
+          
+                className="btn btnRedBig"
+              >
+                Cancel Action
+              </button>
+            </div> : <div></div>
+            }
+            </Link>
+          <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="d-flex justify-content-center bottonFixed">
+         
             <BottonJoin
               type="submit"
               userId={this.props.user._id}
@@ -146,25 +150,38 @@ class EventDetails extends Component {
               ? this.state.members.slice(0, 3).map((member) => {
                   return (
                     <div>
-                    <div className="col text-center">
-                      <img className="memberImg" src={member.imageUrl} alt="" />
-                      <h3 className="text-memb text-dark">{member.name}</h3>
+                      <div className="col text-center">
+                        <img
+                          className="memberImg"
+                          src={member.imageUrl}
+                          alt=""
+                        />
+                        <h3 className="text-memb text-dark">{member.name}</h3>
+                      </div>
                     </div>
-                  </div>
                   );
                 })
               : this.state.members.map((member) => {
                   return (
                     <div>
-                    <div className="col text-center">
-                      <img className="memberImg" src={member.imageUrl} alt="" />
-                      <p className="text-memb text-dark">{member.name}</p>
+                      <div className="col text-center">
+                        <img
+                          className="memberImg"
+                          src={member.imageUrl}
+                          alt=""
+                        />
+                        <p className="text-memb text-dark">{member.name}</p>
+                      </div>
                     </div>
-                  </div>
                   );
                 })}
-            { this.state.members.length > 3 ? <span className="mt-2"><i>... {this.state.members.length -3} more going</i></span> : <div></div>}
-            
+            {this.state.members.length > 3 ? (
+              <span className="mt-2">
+                <i>... {this.state.members.length - 3} more going</i>
+              </span>
+            ) : (
+              <div></div>
+            )}
           </div>
           {/* <div className="row pt-3">
             {this.state.members.map((member) => {
@@ -215,7 +232,9 @@ class EventDetails extends Component {
             </Marker>
           )}
         </Map>
-
+        {this.state.creator._id === this.props.user._id ? 
+        <p className="someAdd">Something to add?</p>
+        : <span></span>}
         <Message
           userId={this.props.user._id}
           members={this.state.members}

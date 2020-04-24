@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import service from "../api/service";
 import { Redirect } from "react-router-dom";
 
+
+
 class Message extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class Message extends Component {
         this.setState({
           redirect: true
         })
-        console.log("Sended", res);
+        console.log("Sent", res);
         })
         .catch((err) => {
             console.log("Error while adding the thing:", err);
@@ -39,18 +41,22 @@ class Message extends Component {
         console.log( this.props.members, this.state.notifications, "holaaaaaaNotifications");
         this.setState({ [name]: value, eventId: this.props.eventId, members: this.props.members, creator:this.props.creator });
       };
+
+
+
     render() {
      
       
     
      if (this.props.creator === this.props.userId) { //console.log(result);
     return (
+     
       <form onSubmit ={(e)=> this.handleSubmit(e)}>
         <div className="text-center ">
           <div>
            
-            <label className="someAdd">Something to add?</label>
-            <div className="textAreaCreator mb-3">
+            
+            <div className="textAreaCreator m-3">
               <textarea
                 name="notifications"
                 value={this.state.notifications}
@@ -67,6 +73,8 @@ class Message extends Component {
           </div>
         </div>
       </form>
+     
+      
     );  
      }else{
          return(<div></div>)

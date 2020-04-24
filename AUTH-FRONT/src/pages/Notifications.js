@@ -25,19 +25,19 @@ class Notifications extends Component {
     this.getCreatorInfo();
   }
   render() {
-    
-    console.log(this.props);
+    let notiInfoSave = [...this.state.notiInfo]
+    console.log(notiInfoSave, 'save');
     return (
       <div className=" m-4">
         <h3 className ="text-center mb-5">Inbox</h3>
         <div>
-          {this.state.notiInfo.map((noti) => {
+          {notiInfoSave.map((noti) => {
             return (
               <div className ="row d-flex justify-content-center mb-3">
                 <div><img className="profileImgNoti  mr-3" src={noti.creatorId.imageUrl} alt=""/></div>
                 <div className="colorBgNoti align-content-center ">
                   <h5><b>{noti.creatorId.name} {noti.creatorId.lastName}</b></h5>
-              <h5 className="colorTitleNoti"><i>{noti.eventId.title}</i></h5>
+              {/* <h5 className="colorTitleNoti"><i>{noti.eventId.title}</i></h5> */}
               <p className="messageNoti">{noti.message}</p>
               </div>
 
